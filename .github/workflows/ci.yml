@@ -7,7 +7,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+      # gitleaks BINARY (free / open source) — the gitleaks-action wrapper now
+      # requires a paid license for org repos; the CLI does not. Runs before
+      # `npm ci` so it scans only tracked source, not node_modules.
+      - name: Secret scan (public registry hygiene)
+        run: |
+          VERSION=8.21.2
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}/gitleaks_${VERSION}_linux_x64.tar.gz" -o /tmp/gl.tgz
+          tar -xzf /tmp/gl.tgz -C /tmp gitleaks
+          /tmp/gitleaks detect --source . --redact --no-banner --exit-code 1
       - uses: actions/setup-node@v5
         with:
           node-version: "22"
@@ -15,7 +24,3 @@ jobs:
       - run: npm ci
       - run: npm run registry:build
       - run: npx vitest run
-      - name: Secret scan (public registry hygiene)
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
