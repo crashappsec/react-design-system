@@ -232,6 +232,13 @@ import {
   CarouselNext,
 } from "@/registry/crashoverride/ui/carousel"
 import { Toaster, toast } from "@/registry/crashoverride/ui/toaster"
+import { Calendar } from "@/registry/crashoverride/ui/calendar"
+import { DatePicker } from "@/registry/crashoverride/ui/date-picker"
+import { StatusBadge } from "@/registry/crashoverride/ui/status-badge"
+import { Tag } from "@/registry/crashoverride/ui/tag"
+import { Kbd } from "@/registry/crashoverride/ui/kbd"
+import { Empty } from "@/registry/crashoverride/ui/empty"
+import { Item } from "@/registry/crashoverride/ui/item"
 import {
   Search,
   CircleCheck,
@@ -244,6 +251,9 @@ import {
   Settings,
   Trash2,
   Pencil,
+  Globe,
+  Users,
+  Inbox,
 } from "lucide-react"
 
 /**
@@ -253,6 +263,8 @@ import {
  */
 export function App() {
   const [light, setLight] = useState(false)
+  const [day, setDay] = useState<Date | undefined>(new Date())
+  const [tags, setTags] = useState(["k8s", "us-east-1", "go"])
 
   function toggle() {
     const root = document.documentElement
@@ -1258,6 +1270,118 @@ export function App() {
             Error
           </Button>
         </Group>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Calendar / DatePicker
+        </h2>
+        <Group className="flex-wrap items-start gap-6">
+          <Calendar
+            mode="single"
+            selected={day}
+            onSelect={setDay}
+            className="rounded-md border border-border"
+          />
+          <Stack className="gap-3">
+            <DatePicker
+              value={day}
+              onChange={setDay}
+              placeholder="Pick a date"
+            />
+            <span className="font-mono text-xs text-muted-foreground">
+              {day ? day.toDateString() : "no date selected"}
+            </span>
+          </Stack>
+        </Group>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          StatusBadge
+        </h2>
+        <Group className="flex-wrap">
+          <StatusBadge status="healthy" />
+          <StatusBadge status="needs_attention" />
+          <StatusBadge status="at_risk" />
+          <StatusBadge status="critical" />
+          <StatusBadge status="stale" />
+        </Group>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Tag
+        </h2>
+        <Stack className="gap-3">
+          <Group className="flex-wrap gap-4">
+            <Tag icon={<Globe />} label="us-east-1" />
+            <Tag icon={<Users />} label="12 contributors" />
+            <Tag label="SLSA" value="Level 2" />
+          </Group>
+          <Group className="flex-wrap">
+            {tags.map((t) => (
+              <Tag
+                key={t}
+                label={t}
+                onRemove={() => setTags((prev) => prev.filter((x) => x !== t))}
+              />
+            ))}
+          </Group>
+        </Stack>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Kbd
+        </h2>
+        <Group className="items-center gap-2 text-sm text-muted-foreground">
+          <span>
+            <Kbd>⌘</Kbd> <Kbd>K</Kbd>
+          </span>
+          <span className="ml-4">
+            <Kbd>Ctrl</Kbd> <Kbd>⇧</Kbd> <Kbd>P</Kbd>
+          </span>
+        </Group>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Empty
+        </h2>
+        <div className="max-w-md">
+          <Empty
+            icon={<Inbox />}
+            title="No deployments yet"
+            description="Ship something and it'll beacon back here."
+            action={<Button>Read the docs</Button>}
+          />
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Item
+        </h2>
+        <Stack className="max-w-md gap-2">
+          <Item
+            media={
+              <Avatar size="md">
+                <AvatarFallback>{initials("Floyd Miles")}</AvatarFallback>
+              </Avatar>
+            }
+            title="Floyd Miles"
+            description="floyd@crashoverride.com"
+            actions={<Badge tone="neon">admin</Badge>}
+          />
+          <Item
+            interactive
+            media={<Cloud />}
+            title="prod-bandwidth-system"
+            description="us-east-1 · beaconing since 14:02"
+            actions={<StatusBadge status="healthy" />}
+          />
+        </Stack>
       </section>
 
       <Toaster richColors closeButton />

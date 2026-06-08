@@ -775,6 +775,104 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Month-grid date picker (single / multiple / range). Brand nav arrows reuse the ghost Button voice and the selected day fills with the neon --primary token; today gets a subtle accent ring. Built on react-day-picker + date-fns.",
+      "dependencies": ["react-day-picker", "date-fns", "lucide-react"],
+      "registryDependencies": ["@crashoverride/theme", "@crashoverride/button"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "DatePicker",
+      "description": "Button trigger + popover Calendar. Composes our Popover and Calendar (no new package); the trigger matches the Input voice with a leading calendar glyph and the picked date is formatted with date-fns.",
+      "dependencies": ["date-fns", "lucide-react"],
+      "registryDependencies": [
+        "@crashoverride/theme",
+        "@crashoverride/popover",
+        "@crashoverride/calendar"
+      ],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "status-badge",
+      "type": "registry:ui",
+      "title": "StatusBadge",
+      "description": "Health/status pill mapping a semantic status to a brand colour + leading dot. Lowercase mono, sharp corners. healthy → chart-4 lime, needs_attention / at_risk → chart-3 amber, critical → destructive, stale → muted.",
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/status-badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tag",
+      "type": "registry:ui",
+      "title": "Tag",
+      "description": "Inline metadata item and removable chip — the workhorse of dense console info rows. icon + label for a meta item, label + value for a key→value pair; set onRemove for a dismissible chip. Muted mono voice.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/tag.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Keyboard key hint. Mono, hairline border, subtle fill, sharp brand corners. Combine for chords.",
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Empty-state block: a centered icon chip, title, description, and an optional action inside a dashed hairline frame. Brand display title, muted body copy.",
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "A versatile media row: leading media, title + description, and trailing actions. The building block for lists, settings rows, and results. Card surface with a hairline border; interactive adds a hover lift.",
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/item.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
