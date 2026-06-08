@@ -239,6 +239,90 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Centered modal over a dimmed, lightly blurred scrim. Panel on the --popover surface with a hairline border, sharp brand radius, brand-voice title and muted description. Built on Radix Dialog.",
+      "dependencies": ["@radix-ui/react-dialog", "lucide-react"],
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Edge-anchored side panel sliding in over a scrim — right (default), left, top, or bottom. --popover surface with a single hairline border on the anchored edge. Built on Radix Dialog.",
+      "dependencies": ["@radix-ui/react-dialog", "class-variance-authority", "lucide-react"],
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "Bottom drawer with a grab handle (mobile-first), sliding up over a scrim. --popover surface, sharp top corners, muted handle. Built on vaul.",
+      "dependencies": ["vaul"],
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Rich floating content anchored to a trigger; click to toggle, click-away closes. --popover surface with a hairline border, sharp brand radius, soft shadow. Built on Radix Popover.",
+      "dependencies": ["@radix-ui/react-popover"],
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Hover/focus tooltip in the brand's compact mono voice on the --popover surface with a hairline border. Wrap your app (or a subtree) in TooltipProvider. Built on Radix Tooltip.",
+      "dependencies": ["@radix-ui/react-tooltip"],
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "DropdownMenu",
+      "description": "Click-triggered menu on the --popover surface — highlighted row lifts to --accent, uppercase mono labels, muted shortcuts, neon check/dot indicators, destructive item variant. Built on Radix DropdownMenu.",
+      "dependencies": ["@radix-ui/react-dropdown-menu", "lucide-react"],
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

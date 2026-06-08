@@ -34,6 +34,54 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@/registry/crashoverride/ui/toggle-group"
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+  DialogClose,
+} from "@/registry/crashoverride/ui/dialog"
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from "@/registry/crashoverride/ui/sheet"
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerClose,
+} from "@/registry/crashoverride/ui/drawer"
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/registry/crashoverride/ui/popover"
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "@/registry/crashoverride/ui/tooltip"
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+} from "@/registry/crashoverride/ui/dropdown-menu"
 
 /**
  * Specimen app — local visual QA for the Crash Override registry.
@@ -305,6 +353,115 @@ export function App() {
             <ToggleGroupItem value="underline">U</ToggleGroupItem>
           </ToggleGroup>
         </Stack>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Overlays — Dialog / Sheet / Drawer
+        </h2>
+        <Group className="flex-wrap">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button>Rotate key</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Rotate API key</DialogTitle>
+                <DialogDescription>
+                  Your current key stops working immediately.
+                </DialogDescription>
+              </DialogHeader>
+              <Field label="Confirm service name" htmlFor="confirm-name">
+                <Input id="confirm-name" placeholder="zero-test-org" />
+              </Field>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button variant="secondary">Cancel</Button>
+                </DialogClose>
+                <Button>Rotate</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="secondary">Filters</Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <SheetHeader>
+                <SheetTitle>Filters</SheetTitle>
+                <SheetDescription>Narrow the result set.</SheetDescription>
+              </SheetHeader>
+              <Stack className="gap-3 mt-4">
+                <label className="flex items-center gap-2 text-sm">
+                  <Checkbox defaultChecked /> Healthy
+                </label>
+                <label className="flex items-center gap-2 text-sm">
+                  <Checkbox /> At risk
+                </label>
+              </Stack>
+            </SheetContent>
+          </Sheet>
+
+          <Drawer>
+            <DrawerTrigger asChild>
+              <Button variant="ghost">Quick actions</Button>
+            </DrawerTrigger>
+            <DrawerContent>
+              <DrawerHeader>
+                <DrawerTitle>Quick actions</DrawerTitle>
+                <DrawerDescription>Run a task on this service.</DrawerDescription>
+              </DrawerHeader>
+              <DrawerFooter>
+                <Button>Re-scan now</Button>
+                <DrawerClose asChild>
+                  <Button variant="secondary">Close</Button>
+                </DrawerClose>
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+        </Group>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Overlays — Popover / Tooltip / DropdownMenu
+        </h2>
+        <TooltipProvider>
+          <Group className="flex-wrap">
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="ghost">Info</Button>
+              </PopoverTrigger>
+              <PopoverContent>
+                <p className="text-sm">Beaconing from prod since 14:02.</p>
+              </PopoverContent>
+            </Popover>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="ghost">Copy SBOM</Button>
+              </TooltipTrigger>
+              <TooltipContent>copy sbom</TooltipContent>
+            </Tooltip>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="secondary">More</Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>Service</DropdownMenuLabel>
+                <DropdownMenuItem>
+                  Rename
+                  <DropdownMenuShortcut>⌘E</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem>Re-scan</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </Group>
+        </TooltipProvider>
       </section>
     </div>
   )
