@@ -94,6 +94,6 @@ The implementation plan and design spec live in the COMPASS repository under
 
 ## License
 
-**To be finalized.** This registry packages Crash Override brand IP; the open-source
-license is an owner decision that is still pending — see [LICENSE](./LICENSE). Until it
-is chosen, treat this as "all rights reserved, internal use" and do not redistribute.
+[MIT](./LICENSE) © Crash Override, Inc. Free to use, copy, modify, and vendor into your
+own applications (including via `shadcn add`). The Crash Override name, logo, and visual
+identity remain trademarks of Crash Override, Inc.
