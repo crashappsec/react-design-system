@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/registry/crashoverride/theme/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/registry/crashoverride/ui",
+    "ui": "@/registry/crashoverride/ui",
+    "lib": "@/registry/crashoverride/lib",
+    "hooks": "@/registry/crashoverride/hooks",
+    "utils": "@/registry/crashoverride/lib/utils"
+  },
+  "registries": {
+    "@crashoverride": "https://crashappsec.github.io/react-design-system/r/{name}.json"
+  }
+}
