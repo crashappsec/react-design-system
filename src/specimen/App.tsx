@@ -1,4 +1,7 @@
 import { useState } from "react"
+import { Stack, Group, Center, Box, Grid } from "@/registry/crashoverride/ui/layout"
+import { Divider } from "@/registry/crashoverride/ui/divider"
+import { Button } from "@/registry/crashoverride/ui/button"
 
 /**
  * Specimen app — local visual QA for the Crash Override registry.
@@ -56,7 +59,41 @@ export function App() {
         </div>
       </section>
 
-      {/* Component sections are appended here as registry items land. */}
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Button
+        </h2>
+        <Group className="flex-wrap">
+          <Button>Get Started</Button>
+          <Button variant="secondary">Read the docs</Button>
+          <Button variant="enterprise">Talk to a Human</Button>
+          <Button variant="ghost">Cancel</Button>
+          <Button size="sm">Small</Button>
+          <Button size="lg">Large</Button>
+          <Button disabled>Disabled</Button>
+        </Group>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Layout primitives
+        </h2>
+        <Stack className="gap-4">
+          <Group className="gap-2">
+            <Box className="bg-card border border-border rounded-md px-3 py-2">Group A</Box>
+            <Box className="bg-card border border-border rounded-md px-3 py-2">Group B</Box>
+          </Group>
+          <Divider />
+          <Grid className="grid-cols-3">
+            <Box className="bg-card border border-border rounded-md p-4">1</Box>
+            <Box className="bg-card border border-border rounded-md p-4">2</Box>
+            <Box className="bg-card border border-border rounded-md p-4">3</Box>
+          </Grid>
+          <Center className="h-24 bg-card border border-border rounded-md">
+            <span className="font-mono text-sm">centered</span>
+          </Center>
+        </Stack>
+      </section>
     </div>
   )
 }
