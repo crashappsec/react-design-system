@@ -1,0 +1,76 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+import {
+  H1,
+  H2,
+  H3,
+  P,
+  Lead,
+  Blockquote,
+  InlineCode,
+  Muted,
+} from "@/registry/crashoverride/ui/typography"
+
+<Meta title="Foundations/Typography" />
+
+# Typography & Fonts
+
+Three faces carry the system. They are loaded by the `theme` item (Google-hosted woff2,
+latin subset) and mapped to Tailwind v4 font utilities (`font-display`, `font-sans`,
+`font-mono`).
+
+## The three fonts
+
+<div className="flex flex-col gap-6">
+  <div>
+    <Muted>font-display · JetBrains Mono — headings &amp; brand</Muted>
+    <div className="font-display text-3xl font-bold text-foreground">
+      Tag. Track. Trust.
+    </div>
+  </div>
+  <div>
+    <Muted>font-sans · Inter — body</Muted>
+    <div className="font-sans text-3xl text-foreground">
+      The Data Plane for Software in the AI Era.
+    </div>
+  </div>
+  <div>
+    <Muted>font-mono · Geist Mono — code, labels, data</Muted>
+    <div className="font-mono text-3xl text-foreground">
+      $ chalk insert --recursive
+    </div>
+  </div>
+</div>
+
+## Type scale
+
+Rendered with the registry `Typography` component (`@crashoverride/typography`). Headings
+ride the display face; body is Inter; inline code is Geist Mono.
+
+<div className="flex flex-col gap-4">
+  <H1>H1 — Display heading</H1>
+  <H2>H2 — Section heading</H2>
+  <H3>H3 — Subsection heading</H3>
+  <Lead>Lead — an intro paragraph that sits above body copy and sets the scene.</Lead>
+  <P>
+    Body — the default reading size in Inter. It carries long-form content with{" "}
+    <InlineCode>InlineCode</InlineCode> for tokens and commands set in Geist Mono.
+  </P>
+  <Blockquote>
+    "You can't secure what you can't see." — a Blockquote, accented with the brand
+    primary on its left rule.
+  </Blockquote>
+  <Muted>Muted — small mono meta text in --muted-foreground (captions, labels).</Muted>
+</div>
+
+## Usage
+
+```tsx
+import { H1, P, InlineCode } from "@/registry/crashoverride/ui/typography"
+
+<H1>Tag. Track. Trust.</H1>
+<P>Body copy in Inter. <InlineCode>chalk insert</InlineCode>.</P>
+```
+
+> **Casing:** Sentence case for body and most headings. UPPERCASE with wide letter-spacing
+> is reserved for eyebrow labels and status pills (`PLATFORM CAPABILITIES`, `01 · MONITOR`).
+> Never set a full sentence in all-caps.

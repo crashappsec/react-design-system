@@ -25,3 +25,9 @@ public/r/
 *.njsproj
 *.sln
 *.sw?
+
+*storybook.log
+storybook-static
+
+# Local Pages assemble dir (CI builds this fresh; serves Storybook + /r/)
+_site

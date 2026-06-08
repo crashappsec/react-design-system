@@ -3,10 +3,11 @@ import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
+import storybook from 'eslint-plugin-storybook'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist', 'public/r']),
+  globalIgnores(['dist', 'public/r', 'storybook-static', '_site']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -28,4 +29,5 @@ export default defineConfig([
       'react-refresh/only-export-components': 'off',
     },
   },
+  ...storybook.configs['flat/recommended'],
 ])

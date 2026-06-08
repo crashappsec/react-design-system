@@ -19,9 +19,19 @@ jobs:
           node-version: "22"
           cache: "npm"
       - run: npm ci
+      # Build the registry JSON (emits public/r/*.json) — the LIVE artifact
+      # consumers depend on at /r/{name}.json. URLs must stay stable.
       - run: npm run registry:build
+      # Build the browsable Storybook docs site (outputs storybook-static/).
+      - run: npm run build-storybook
+      # Assemble the deploy dir: Storybook at the root, registry JSON at /r/.
+      - name: Assemble Pages site
+        run: |
+          rm -rf _site
+          cp -r storybook-static _site
+          cp -r public/r _site/r
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: public
+          path: _site
       - id: deploy
         uses: actions/deploy-pages@v4

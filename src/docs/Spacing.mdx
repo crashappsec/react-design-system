@@ -1,0 +1,38 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+import { SpacingBar, RadiusBox } from "./Swatches"
+
+<Meta title="Foundations/Spacing & Radius" />
+
+# Spacing & Radius
+
+## Spacing scale
+
+An **8px grid** with half-steps for fine control. Use it for padding, gaps, and layout
+rhythm — Tailwind's spacing utilities (`p-4`, `gap-6`, `mt-2`) map onto these values.
+
+<div className="flex flex-col gap-3">
+  <SpacingBar label="space-1" rem="0.25rem" px={4} />
+  <SpacingBar label="space-2" rem="0.5rem" px={8} />
+  <SpacingBar label="space-3" rem="0.75rem" px={12} />
+  <SpacingBar label="space-4" rem="1rem" px={16} />
+  <SpacingBar label="space-6" rem="1.5rem" px={24} />
+  <SpacingBar label="space-9" rem="2.25rem" px={36} />
+  <SpacingBar label="space-12" rem="3rem" px={48} />
+  <SpacingBar label="space-18" rem="4.5rem" px={72} />
+</div>
+
+## Radius
+
+The brand radius is a **sharp `0.25rem` (4px)** — corners are crisp, never pill-soft.
+Components read `--radius`; Tailwind's `rounded-sm / -md / -lg` are derived from it
+(`calc(--radius − 2px)`, `--radius`, `calc(--radius + 2px)`).
+
+<div className="flex gap-8">
+  <RadiusBox label="rounded-sm" radius="calc(0.25rem - 2px)" />
+  <RadiusBox label="rounded-md (--radius)" radius="0.25rem" />
+  <RadiusBox label="rounded-lg" radius="calc(0.25rem + 2px)" />
+</div>
+
+> **Surfaces, not shadows.** Cards and panels separate from the page with a **hairline
+> border** and the sharp radius — never a heavy drop shadow. The page is brand Black
+> `#0B1221`; raised cards sit on a slate surface and pop via the 1px border.

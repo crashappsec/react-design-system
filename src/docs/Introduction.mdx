@@ -1,0 +1,89 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+import { Logo } from "@/registry/crashoverride/ui/logo"
+import { Tagline } from "@/registry/crashoverride/ui/tagline"
+
+<Meta title="Foundations/Introduction" />
+
+<div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.5rem" }}>
+  <Logo withWordmark size={36} />
+</div>
+
+# Crash Override — React Design System
+
+A public **shadcn registry** that packages the Crash Override Design System: a brand
+theme (the oklch light + dark token bridge plus the three brand fonts) on top of
+**64 branded components** and **3 composite blocks**. Any shadcn app installs branded
+UI with one command.
+
+<div style={{ margin: "1.5rem 0" }}>
+  <Tagline />
+</div>
+
+## Brand in one breath
+
+> **Tag. Track. Trust.** — The Data Plane for Software in the AI Era.
+
+Dark-first surfaces · **Atomic-lime** primary (Fandango purple in light mode) ·
+**JetBrains Mono** (display) / **Inter** (body) / **Geist Mono** (mono) · sharp **4px**
+radius. The `theme` item ships the oklch light + dark bridge so every component tracks
+both modes automatically — no per-component theming required.
+
+The product is organised as a **capability spine**, and the whole brand — colour, copy,
+iconography — hangs off it:
+
+| # | Capability | Colour | What it does |
+|---|------------|--------|--------------|
+| 01 | **Monitor** | Fandango `#823AA4` | Watches human + agent activity on the desktop, before code hits the build. |
+| 02 | **Inspect** | Jazzberry `#FF3F86` | Runs inside the build "black box" — every dependency, mutation, layer. |
+| 03 | **Tag** | Amber *(extended)* | A cryptographic flight recorder embedded into every artifact that ships. |
+| 04 | **Track** | Atomic lime `#B3FF00` | "AirTags" beacon back from production: where artifacts are, what changed. |
+
+## Consume the registry
+
+**1. Point `components.json` at the `@crashoverride` namespace.** Add (or merge) the
+`registries` block:
+
+```jsonc
+// components.json
+{
+  "registries": {
+    "@crashoverride": "https://crashappsec.github.io/react-design-system/r/{name}.json"
+  }
+}
+```
+
+**2. Install the theme first** — it is the keystone every component depends on (it
+carries the brand tokens and fonts):
+
+```bash
+npx shadcn add @crashoverride/theme
+```
+
+**3. Add components and blocks** as you need them:
+
+```bash
+npx shadcn add @crashoverride/button
+npx shadcn add @crashoverride/card
+npx shadcn add @crashoverride/stat-card-row   # a composite block
+```
+
+Each item resolves to JSON served from GitHub Pages at
+`https://crashappsec.github.io/react-design-system/r/<name>.json`. **These registry URLs
+are stable** — this Storybook site is served at the root, and the registry JSON stays at
+`/r/`, so existing consumers keep working.
+
+## What's in the registry
+
+- **theme** — brand token bridge (oklch light + dark) + JetBrains Mono / Inter / Geist Mono.
+- **Components (64)** — real shadcn/Radix components themed for the brand: layout
+  primitives, forms, overlays, navigation, data display, plus brand-specific extras
+  (`status-badge`, `tag`, `code-panel`, `typography`, `chart`, `logo`, `tagline`).
+- **Blocks (3)** — composites: `stat-card-row`, `service-detail-header`, `service-table`.
+- **Hooks** — `use-mobile`.
+
+## Using this site
+
+The sidebar groups documentation into **Foundations** (this section — colours, type,
+spacing, theming) and **Components** (interactive, prop-driven examples). Use the **theme
+toggle in the toolbar** (top of the page) to flip between dark and light — every story and
+every token swatch re-renders live.

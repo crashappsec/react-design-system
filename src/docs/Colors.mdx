@@ -1,0 +1,62 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+import { Swatch, TokenSwatch, Palette } from "./Swatches"
+
+<Meta title="Foundations/Colors" />
+
+# Colors
+
+The palette is built in three layers: the **brand colours** (the literal Brand Book
+values), the **capability palette** (`--chart-1…5`, colour-coding the product spine), and
+the **semantic shadcn tokens** that every component consumes. The semantic tokens
+re-resolve per theme — flip the **theme toggle in the toolbar** and the semantic swatches
+below recolour live.
+
+## Brand colours
+
+The official Crash Override palette (Brand Book v1). Five colours, no blue.
+
+<Palette>
+  <Swatch value="#B3FF00" name="Atomic lime" note="Primary action · Track" />
+  <Swatch value="#823AA4" name="Fandango" note="Purple accent · Monitor" />
+  <Swatch value="#FF3F86" name="Jazzberry" note="Hot pink · Inspect" />
+  <Swatch value="#E8E2DC" name="Thunder" note="Warm off-white neutral" />
+  <Swatch value="#0B1221" name="Black" note="The brand page surface" />
+</Palette>
+
+## Capability palette (`--chart-1…5`)
+
+The product spine, colour-coded. Used as 3px accent bars, eyebrow labels, and chart
+series — rarely as flat fills. These resolve from theme tokens, so they also track
+light/dark.
+
+<Palette>
+  <TokenSwatch token="--chart-1" bgClass="bg-[var(--chart-1)]" label="Monitor" />
+  <TokenSwatch token="--chart-2" bgClass="bg-[var(--chart-2)]" label="Inspect" />
+  <TokenSwatch token="--chart-3" bgClass="bg-[var(--chart-3)]" label="Tag" />
+  <TokenSwatch token="--chart-4" bgClass="bg-[var(--chart-4)]" label="Track" />
+  <TokenSwatch token="--chart-5" bgClass="bg-[var(--chart-5)]" label="AI" />
+</Palette>
+
+## Semantic tokens (shadcn bridge)
+
+The exact CSS variables shadcn/ui expects, mapped to the brand. Painted with
+`bg-[var(--token)]` so each chip **reflects the active theme** — toggle dark/light in the
+toolbar to watch them flip. `--primary` is Atomic lime on dark, Fandango purple on light.
+
+<Palette>
+  <TokenSwatch token="--background" bgClass="bg-[var(--background)]" textClass="text-[var(--foreground)]" label="Background" />
+  <TokenSwatch token="--foreground" bgClass="bg-[var(--foreground)]" textClass="text-[var(--background)]" label="Foreground" />
+  <TokenSwatch token="--card" bgClass="bg-[var(--card)]" textClass="text-[var(--card-foreground)]" label="Card" />
+  <TokenSwatch token="--primary" bgClass="bg-[var(--primary)]" textClass="text-[var(--primary-foreground)]" label="Primary" />
+  <TokenSwatch token="--secondary" bgClass="bg-[var(--secondary)]" textClass="text-[var(--secondary-foreground)]" label="Secondary" />
+  <TokenSwatch token="--muted" bgClass="bg-[var(--muted)]" textClass="text-[var(--muted-foreground)]" label="Muted" />
+  <TokenSwatch token="--accent" bgClass="bg-[var(--accent)]" textClass="text-[var(--accent-foreground)]" label="Accent" />
+  <TokenSwatch token="--destructive" bgClass="bg-[var(--destructive)]" textClass="text-[var(--destructive-foreground)]" label="Destructive" />
+  <TokenSwatch token="--border" bgClass="bg-[var(--border)]" label="Border" />
+  <TokenSwatch token="--ring" bgClass="bg-[var(--ring)]" label="Ring" />
+</Palette>
+
+> **Why oklch?** The semantic tokens are defined in `oklch(…)` for perceptually uniform
+> lightness across both themes. You never reference them directly — you use the Tailwind
+> utilities (`bg-primary`, `text-muted-foreground`, `border-border`) or the component
+> props, and they resolve correctly in whichever theme is active.

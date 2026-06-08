@@ -1,0 +1,50 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+import { TokenSwatch, Palette } from "./Swatches"
+
+<Meta title="Foundations/Theming" />
+
+# Theming & Dark mode
+
+The system is **dark by default**. The `theme` registry item ships a single
+`globals.css` that defines every shadcn token in `oklch(…)` for both modes and maps them
+to Tailwind v4 utilities. Components never theme themselves — they consume the tokens, so
+adding the theme brands the entire surface at once.
+
+## How modes are selected
+
+`globals.css` keys off **both** conventions, so it drops into any app:
+
+```css
+/* dark is the brand default (:root) */
+:root, [data-theme="dark"], .dark { --background: oklch(0.17 0.03 274); /* … */ }
+
+/* light is opt-in */
+[data-theme="light"], .light { --background: oklch(1 0 0); /* … */ }
+```
+
+- Add **nothing** → you get dark (the brand default).
+- Add `class="dark"` / `class="light"` on a container (the `next-themes` convention).
+- Add `data-theme="dark"` / `data-theme="light"` (the Crash Override admin convention).
+
+Either attribute resolves the same tokens, so consumers can use whichever theming library
+they already have.
+
+## The toolbar toggle
+
+This Storybook wires the **theme switcher in the toolbar** (top of the page) to
+`data-theme` on `<html>` via `@storybook/addon-themes` `withThemeByDataAttribute`. Because
+`globals.css` keys off `[data-theme]`, flipping the toggle re-resolves every token live —
+across every story and every swatch.
+
+Watch these flip as you toggle:
+
+<Palette>
+  <TokenSwatch token="--background" bgClass="bg-[var(--background)]" textClass="text-[var(--foreground)]" label="Background" />
+  <TokenSwatch token="--card" bgClass="bg-[var(--card)]" textClass="text-[var(--card-foreground)]" label="Card" />
+  <TokenSwatch token="--primary" bgClass="bg-[var(--primary)]" textClass="text-[var(--primary-foreground)]" label="Primary" />
+  <TokenSwatch token="--muted" bgClass="bg-[var(--muted)]" textClass="text-[var(--muted-foreground)]" label="Muted" />
+</Palette>
+
+> `--primary` is **Atomic lime** on dark and **Fandango purple** on light — lime is
+> illegible on white, so the action colour switches. This is the one token that changes
+> hue (not just lightness) between modes; everything else tracks automatically.
