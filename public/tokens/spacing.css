@@ -1,0 +1,71 @@
+/* ============================================================
+   Crash Override — Spacing, Radius, Shadow, Motion Tokens
+   8px grid · sharp/minimal rounding · punchy custom easing
+   ============================================================ */
+
+:root {
+  /* ── Spacing (8px grid) ───────────────────────────────────── */
+  --spacing-0: 0px;
+  --spacing-px: 1px;
+  --spacing-0_5: 2px;
+  --spacing-1: 4px;
+  --spacing-1_5: 6px;
+  --spacing-2: 8px;
+  --spacing-2_5: 10px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-4_5: 18px;
+  --spacing-6: 24px;
+  --spacing-9: 36px;
+  --spacing-12: 48px;
+  --spacing-15: 60px;
+  --spacing-18: 72px;
+  --spacing-22: 90px;
+  --spacing-30: 120px;
+  --spacing-45: 180px;
+  --spacing-60: 240px;
+
+  /* ── Border radius — deliberately sharp ───────────────────── */
+  --radius-xxs: 1px;
+  --radius-xs: 2px;
+  --radius-md: 4px;   /* default for cards, inputs, buttons */
+  --radius-lg: 6px;   /* code panels, large surfaces */
+  --radius-full: 9999px;
+
+  /* ── Border widths ────────────────────────────────────────── */
+  --border-width-hairline: 1px;
+  --border-width-accent: 3px;   /* capability top/left accent bars */
+
+  /* ── Shadows — low, dark, restrained ──────────────────────── */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.2);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+  --shadow-glow-neon: 0 0 0 1px var(--color-neon-400-20), 0 0 24px -4px var(--color-neon-400-30);
+
+  /* ── Blur ─────────────────────────────────────────────────── */
+  --blur-0: 0px;
+  --blur-5: 5px;
+  --blur-12: 12px;
+  --blur-24: 24px;
+
+  /* ── Layout ───────────────────────────────────────────────── */
+  --max-width-content: 1280px;
+  --header-height: 88px;
+
+  /* ── Breakpoints (reference) ──────────────────────────────── */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+
+  /* ── Easing — custom curves with punch (not default CSS) ──── */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);      /* @kind other */
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);  /* @kind other */
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);   /* @kind other */
+
+  /* ── Transitions ──────────────────────────────────────────── */
+  --transition-fast: 150ms var(--ease-out);
+  --transition-base: 250ms var(--ease-out);
+  --transition-slow: 350ms var(--ease-out);
+}

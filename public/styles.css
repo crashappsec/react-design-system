@@ -1,0 +1,13 @@
+/* ============================================================
+   Crash Override — Design System
+   Global entry point. Consumers link THIS file.
+   Imports only — no rules declared here directly.
+   ============================================================ */
+
+@import "./tokens/fonts.css";
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/semantic.css";
+@import "./tokens/shadcn.css";
+@import "./tokens/base.css";

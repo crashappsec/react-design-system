@@ -1,0 +1,150 @@
+/* ============================================================
+   Crash Override — Base Element Styles + Utilities
+   Applied on top of the token layer. Consumers get sensible
+   defaults: phosphor-dark body, JetBrains Mono headings, neon
+   focus rings, the brand's punchy fade/stagger motion.
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: dark;
+  scroll-padding-top: var(--header-height);
+}
+html[data-theme="light"] { color-scheme: light; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  line-height: var(--leading-22);
+  color: var(--text-primary);
+  background-color: var(--surface-primary);
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+/* ── Headings — JetBrains Mono, tight tracking ──────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  margin: 0;
+}
+h1 { font-size: var(--text-72); line-height: var(--leading-80); }
+h2 { font-size: var(--text-48); line-height: var(--leading-48); }
+h3 { font-size: var(--text-36); line-height: 40px; }
+h4 { font-size: var(--text-24); line-height: var(--leading-30); }
+h5 { font-size: var(--text-20); line-height: var(--leading-22); }
+h6 { font-size: var(--text-18); line-height: var(--leading-22); }
+
+@media (max-width: 768px) {
+  h1 { font-size: var(--text-48); line-height: var(--leading-48); }
+  h2 { font-size: var(--text-36); line-height: 40px; }
+  h3 { font-size: var(--text-24); line-height: var(--leading-32); }
+  h4 { font-size: var(--text-20); line-height: var(--leading-30); }
+}
+
+/* ── Links — neon green, underline on hover ─────────────────── */
+a { color: var(--text-emphasis); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* ── Focus — neon ring everywhere ───────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* ── Eyebrow label — uppercase, wide-tracked accent ─────────── */
+.co-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-12);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-label-accent);
+}
+
+/* ── Accent underline for headline emphasis ─────────────────── */
+.co-accent-underline {
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-decoration-color: var(--color-neon-400);
+  text-underline-offset: 8px;
+  text-decoration-thickness: 3px;
+}
+
+/* ── Tagline — "Tag. Track. Trust." canonical tri-colour lockup ───
+   A deliberate TRAFFIC-LIGHT device: Tag = red, Track = amber,
+   Trust = Atomic-lime ("green = go"). These signal hues are a wordmark
+   treatment only — distinct from the brand/capability palette. The
+   lockup is vivid by design, so on light backgrounds wrap it in the
+   Black chip via `.co-tagline--plate`. */
+.co-tagline .t-tag   { color: var(--color-red-800); }   /* red — stop / attention */
+.co-tagline .t-track { color: #F5A623; }                /* amber — caution / in-motion */
+.co-tagline .t-trust { color: var(--color-atomic-lime); } /* green — go / trust */
+.co-tagline--plate {
+  display: inline-block;
+  background: var(--color-co-black);
+  padding: 0.08em 0.42em;
+  border-radius: var(--radius-md);
+}
+
+/* ── Section divider — hairline rule ────────────────────────── */
+.co-divider {
+  border: none;
+  border-top: 1px solid var(--border-hairline);
+  margin: 0;
+}
+
+/* ── Card hover — selection lift via border, not bg ─────────── */
+.co-card-hover {
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+.co-card-hover:hover {
+  background-color: var(--surface-invert);
+  border-color: var(--border-grey);
+}
+
+/* ── Motion — fade-up + stagger ─────────────────────────────── */
+@keyframes coFadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.co-stagger > * {
+  opacity: 0;
+  animation: coFadeInUp 300ms var(--ease-out) forwards;
+}
+.co-stagger > *:nth-child(1) { animation-delay: 0ms; }
+.co-stagger > *:nth-child(2) { animation-delay: 50ms; }
+.co-stagger > *:nth-child(3) { animation-delay: 100ms; }
+.co-stagger > *:nth-child(4) { animation-delay: 150ms; }
+.co-stagger > *:nth-child(5) { animation-delay: 200ms; }
+.co-stagger > *:nth-child(6) { animation-delay: 250ms; }
+
+/* ── Touch-device hover guard ───────────────────────────────── */
+@media (hover: none) {
+  *:hover { transform: none !important; box-shadow: none !important; }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

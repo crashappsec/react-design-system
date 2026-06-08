@@ -1,0 +1,121 @@
+/* ============================================================
+   Crash Override — Semantic Token Layer
+   Maps brand palette → roles (text / surface / border / button).
+   Dark is the default (color-scheme: dark). Light mode is opt-in
+   via [data-theme="light"] on <html>.
+   ============================================================ */
+
+:root,
+[data-theme="dark"],
+.dark {
+  /* ── Text hierarchy ───────────────────────────────────────── */
+  --text-primary: hsl(225, 25%, 98%);    /* 18.9:1 */
+  --text-secondary: hsl(225, 25%, 80%);  /* 11.7:1 */
+  --text-tertiary: hsl(225, 25%, 58%);   /* 5.6:1 */
+  --text-emphasis: var(--color-neon-400);
+  --text-invert: var(--color-grey-100);
+  --text-disabled: hsl(225, 25%, 35%);
+  --text-placeholder: hsl(225, 25%, 55%);
+  --text-error: var(--color-red-800);
+
+  /* ── Capability + label accents (auto-flip to AA in light) ── */
+  --text-label-accent: var(--color-magenta-500);       /* default section eyebrow */
+  --text-label-cobalt: var(--color-cobalt-400);        /* Monitor */
+  --text-label-magenta: var(--color-magenta-500);      /* Inspect */
+  --text-label-amber: var(--color-neon-300);           /* Tag → light lime */
+  --text-label-neon: var(--color-neon-400);            /* Track */
+  --text-label-teal: var(--color-cobalt-400);          /* → Fandango */
+  --text-label-green-terminal: var(--color-neon-400);
+  --text-label-yellow: var(--color-yellow-700);
+
+  /* ── Surfaces — flat, one background ──────────────────────── */
+  --surface-primary: var(--color-dark-surface);            /* THE content surface */
+  --surface-secondary: var(--color-dark-surface-secondary); /* input fills only */
+  --surface-invert: var(--color-dark-surface-invert);      /* hover / selection */
+  --surface-disabled: var(--color-grey-800);
+  --surface-card: var(--color-dark-surface-secondary);     /* slate raised card */
+  --surface-brand1: var(--color-neon-400);                 /* announcement bar */
+  --surface-brand2: var(--color-cobalt-500);
+  --surface-magenta: var(--color-magenta-500);
+  --surface-error: var(--color-red-200);
+  --surface-success: var(--color-neon-200);
+
+  /* ── Borders — cool, low-contrast hairlines ───────────────── */
+  --border-default1: hsl(225, 25%, 35%);
+  --border-default2: var(--color-grey-300);
+  --border-grey: var(--color-grey-600);
+  --border-negative: var(--color-red-800);
+  --border-warning: var(--color-yellow-700);
+  --border-positive: var(--color-neon-600);
+  /* Hairline — the palette default divider. Low-contrast by design:
+     cards & sections separate via structure, not bg colour. */
+  --border-hairline: rgba(255, 255, 255, 0.08);
+
+  /* ── Buttons — neon-green primary action ──────────────────── */
+  --btn-primary-bg: var(--color-neon-400);
+  --btn-primary-border: var(--color-neon-400);
+  --btn-primary-text: #0B0F19;          /* dark text on green */
+  --btn-secondary-bg: transparent;
+  --btn-secondary-border: var(--color-grey-700);
+  --btn-secondary-text: var(--color-grey-100);
+  --btn-secondary-hover-bg: var(--color-dark-surface-invert);
+  --btn-active-bg: var(--color-neon-600);
+  --btn-disabled-bg: var(--color-grey-800);
+  --btn-disabled-border: var(--color-grey-700);
+  /* Enterprise CTA — cobalt fill, hero/CTA bands only */
+  --btn-enterprise-bg: var(--color-cobalt-500);
+  --btn-enterprise-border: var(--color-cobalt-500);
+  --btn-enterprise-text: #FFFFFF;
+
+  /* ── Focus ring ───────────────────────────────────────────── */
+  --focus-ring: var(--color-neon-400);
+}
+
+/* ============================================================
+   Light mode — brand accents stay; surfaces & text invert.
+   ============================================================ */
+[data-theme="light"],
+.light {
+  --text-primary: #1A1A1A;
+  --text-secondary: #595959;
+  --text-tertiary: #4A4A4A;
+  --text-emphasis: var(--color-cobalt-500);
+  --text-invert: #F5F5F5;
+  --text-disabled: #9D9D9D;
+  --text-error: var(--color-red-deep);
+
+  --text-label-accent: var(--color-magenta-700);
+  --text-label-cobalt: var(--color-cobalt-600);
+  --text-label-magenta: var(--color-magenta-700);
+  --text-label-amber: var(--color-neon-800);
+  --text-label-neon: var(--color-neon-900);
+  --text-label-teal: var(--color-cobalt-600);
+  --text-label-green-terminal: var(--color-neon-900);
+  --text-label-yellow: var(--color-yellow-900);
+
+  --surface-primary: #FFFFFF;
+  --surface-secondary: #F7F7F7;
+  --surface-invert: #EFEFEF;
+  --surface-disabled: #E5E5E5;
+  --surface-card: #FFFFFF;
+
+  --border-default1: #E5E5E5;
+  --border-default2: #9D9D9D;
+  --border-grey: #CCCCCC;
+  --border-hairline: rgba(0, 0, 0, 0.08);
+
+  --btn-primary-bg: var(--color-cobalt-500);
+  --btn-primary-border: var(--color-cobalt-500);
+  --btn-primary-text: #FFFFFF;
+  --btn-secondary-border: #CCCCCC;
+  --btn-secondary-text: #1A1A1A;
+  --btn-secondary-hover-bg: #F0F0F0;
+  --btn-active-bg: var(--color-cobalt-600);
+
+  --color-code-bg: hsl(120, 14%, 97%);     /* faint green-tinted, not blue */
+  --color-code-border: hsl(120, 10%, 88%);
+  --color-code-text: hsl(140, 10%, 16%);
+  --color-syntax-keyword: var(--color-magenta-700);
+  --color-syntax-string: hsl(210, 60%, 35%);
+  --color-syntax-function: hsl(220, 50%, 40%);
+}

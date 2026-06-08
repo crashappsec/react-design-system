@@ -1,73 +1,99 @@
-# React + TypeScript + Vite
+# Crash Override — React Design System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A public **shadcn registry** that packages the Crash Override Design System: a brand
+theme (the oklch light+dark token bridge + fonts) plus 60+ branded components and a
+handful of composite blocks. Any shadcn app installs branded UI with one command:
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npx shadcn add @crashoverride/<name>
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+> **Tag. Track. Trust.** — The Data Plane for Software in the AI Era.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Brand in one breath
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Dark-first surfaces · **Atomic-lime** primary (Fandango in light mode) · **JetBrains
+Mono** (display) / **Inter** (body) / **Geist Mono** (mono) · sharp **4px** radius. The
+`theme` item ships the oklch light+dark bridge so every component tracks both modes
+automatically — no per-component theming required.
+
+## Consume the registry
+
+**1. Point `components.json` at the `@crashoverride` namespace.** Add the `registries`
+block (or merge it into your existing one):
+
+```jsonc
+// components.json
+{
+  "registries": {
+    "@crashoverride": "https://crashappsec.github.io/react-design-system/r/{name}.json"
+  }
+}
 ```
+
+**2. Install the theme first** — it is the keystone every component depends on (it
+carries the brand tokens and fonts):
+
+```bash
+npx shadcn add @crashoverride/theme
+```
+
+**3. Add components and blocks** as you need them:
+
+```bash
+npx shadcn add @crashoverride/button
+npx shadcn add @crashoverride/card
+npx shadcn add @crashoverride/stat-card-row   # a composite block
+```
+
+Each item resolves to JSON served from GitHub Pages at
+`https://crashappsec.github.io/react-design-system/r/<name>.json`.
+
+## What's in the registry
+
+- **theme** — brand token bridge (oklch light+dark) + JetBrains Mono / Inter / Geist Mono.
+- **Components (64)** — real shadcn/Radix components themed for the brand: layout
+  primitives, forms, overlays, navigation, data display, plus brand-specific extras
+  (`status-badge`, `tag`, `code-panel`, `typography`, `chart`, `logo`, `tagline`).
+- **Blocks (3)** — composites built from the components above:
+  `stat-card-row`, `service-detail-header`, `service-table`.
+- **Hooks** — `use-mobile`.
+
+The authoritative list of items lives in [`registry.json`](./registry.json), and the
+generated JSON in `public/r/` after a build.
+
+## Live site
+
+The registry and its brand guidelines are published to GitHub Pages:
+
+- **Landing page:** https://crashappsec.github.io/react-design-system/
+- **Registry items:** `https://crashappsec.github.io/react-design-system/r/<name>.json`
+- **Brand guidelines:** `https://crashappsec.github.io/react-design-system/guidelines/`
+
+## Develop locally
+
+```bash
+npm install
+npm run dev             # specimen app — visual QA of every registry item
+npm run registry:build  # compile registry.json -> public/r/*.json (shadcn build)
+npm run test            # vitest (smoke tests + build validation)
+npm run build           # type-check + vite production build
+npm run lint            # eslint
+```
+
+The **specimen app** (`src/specimen/`) renders every item in both light and dark for
+visual review; it is the human gate. `src/test/registry-build.test.ts` is the machine
+gate that validates the build output.
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for the component recipe (how to add a new item).
+
+## Plan & spec
+
+The implementation plan and design spec live in the COMPASS repository under
+`docs/superpowers/plans/2026-06-08-crash-override-react-design-system.md`.
+
+## License
+
+**To be finalized.** This registry packages Crash Override brand IP; the open-source
+license is an owner decision that is still pending — see [LICENSE](./LICENSE). Until it
+is chosen, treat this as "all rights reserved, internal use" and do not redistribute.

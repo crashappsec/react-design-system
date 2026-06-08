@@ -1,0 +1,118 @@
+/* ============================================================
+   Crash Override — shadcn/ui Theme Bridge
+   ------------------------------------------------------------
+   The EXACT CSS variable names shadcn/ui (Radix + Tailwind) expects,
+   mapped to the Crash Override brand, in full LIGHT + DARK.
+
+   FOR DEVELOPERS using shadcn/ui:
+     Paste the :root (light) and .dark blocks below into your
+     app's globals.css. The values are modern shadcn format
+     (oklch, used directly — Tailwind v4 `@theme inline` maps
+     --color-* → these). Tokens line up 1:1 with shadcn's docs.
+
+   FOR CLAUDE / this design system:
+     These are also live here, scoped to BOTH shadcn's `.dark`
+     class AND this system's `[data-theme]` attribute, so brand
+     components and shadcn components theme identically.
+
+   CONVENTION: dark is the brand default (:root). Light is opt-in
+   via [data-theme="light"] / .light. shadcn's `.dark` is honoured
+   for drop-in compatibility.
+   ============================================================ */
+
+/* ── LIGHT — paste as :root in a standard shadcn project ─────── */
+[data-theme="light"],
+.light {
+  --radius: 0.25rem;                        /* brand is deliberately sharp */
+
+  --background: oklch(1 0 0);               /* #FFFFFF */
+  --foreground: oklch(0.205 0 0);           /* #1A1A1A */
+
+  --card: oklch(1 0 0);                     /* flat — separates via border */
+  --card-foreground: oklch(0.205 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.205 0 0);
+
+  /* In light mode the brand's action colour is Fandango purple
+     (Atomic lime is illegible as a fill on white; the brand has no blue). */
+  --primary: oklch(0.46 0.18 309);          /* Fandango #823AA4 */
+  --primary-foreground: oklch(1 0 0);
+
+  --secondary: oklch(0.95 0.004 75);        /* Thunder-tint #EDE9E4 */
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.95 0.004 75);
+  --muted-foreground: oklch(0.45 0 0);      /* #595959 */
+  --accent: oklch(0.92 0.006 75);           /* Thunder hover surface */
+  --accent-foreground: oklch(0.205 0 0);
+
+  --destructive: oklch(0.58 0.22 24);       /* #991B1B-ish, AA on white */
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.90 0.006 75);           /* Thunder-grey border */
+  --input: oklch(0.90 0.006 75);
+  --ring: oklch(0.46 0.18 309);             /* Fandango focus ring */
+
+  /* Capability palette → chart slots (Monitor/Inspect/Tag/Track/AI) */
+  --chart-1: oklch(0.46 0.18 309);          /* Fandango  — Monitor */
+  --chart-2: oklch(0.58 0.22 5);            /* Jazzberry — Inspect */
+  --chart-3: oklch(0.70 0.16 70);           /* Amber     — Tag (extended) */
+  --chart-4: oklch(0.80 0.21 124);          /* Atomic lime — Track */
+  --chart-5: oklch(0.62 0.13 183);          /* Teal      — AI (extended) */
+
+  /* Sidebar surface tokens */
+  --sidebar: oklch(0.985 0.003 75);
+  --sidebar-foreground: oklch(0.205 0 0);
+  --sidebar-primary: oklch(0.46 0.18 309);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.92 0.006 75);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.90 0.006 75);
+  --sidebar-ring: oklch(0.46 0.18 309);
+}
+
+/* ── DARK — brand default. Paste as .dark in a shadcn project ── */
+:root,
+[data-theme="dark"],
+.dark {
+  --radius: 0.25rem;
+
+  --background: oklch(0.17 0.03 274);       /* Black #0B1221 (navy) */
+  --foreground: oklch(0.97 0.004 90);       /* Thunder-tinted white */
+
+  --card: oklch(0.30 0.02 274);             /* slate raised surface */
+  --card-foreground: oklch(0.97 0.004 90);
+  --popover: oklch(0.33 0.02 274);          /* slate — menus lift a touch */
+  --popover-foreground: oklch(0.97 0.004 90);
+
+  --primary: oklch(0.93 0.25 124);          /* Atomic lime #B3FF00 */
+  --primary-foreground: oklch(0.17 0.03 274); /* Black #0B1221 */
+
+  --secondary: oklch(0.27 0.035 274);       /* surface-invert (navy lift) */
+  --secondary-foreground: oklch(0.97 0.004 90);
+  --muted: oklch(0.27 0.035 274);
+  --muted-foreground: oklch(0.68 0.02 274);
+  --accent: oklch(0.27 0.035 274);          /* hover surface */
+  --accent-foreground: oklch(0.97 0.004 90);
+
+  --destructive: oklch(0.635 0.225 23);     /* #F44747 */
+  --destructive-foreground: oklch(0.97 0.004 90);
+
+  --border: oklch(1 0 0 / 8%);              /* hairline — brand signature */
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.93 0.25 124);             /* Atomic lime focus ring */
+
+  --chart-1: oklch(0.46 0.18 309);          /* Fandango  — Monitor */
+  --chart-2: oklch(0.66 0.24 5);            /* Jazzberry — Inspect */
+  --chart-3: oklch(0.76 0.16 70);           /* Amber     — Tag (extended) */
+  --chart-4: oklch(0.93 0.25 124);          /* Atomic lime — Track */
+  --chart-5: oklch(0.70 0.13 183);          /* Teal      — AI (extended) */
+
+  --sidebar: oklch(0.17 0.03 274);
+  --sidebar-foreground: oklch(0.97 0.004 90);
+  --sidebar-primary: oklch(0.93 0.25 124);
+  --sidebar-primary-foreground: oklch(0.17 0.03 274);
+  --sidebar-accent: oklch(0.27 0.035 274);
+  --sidebar-accent-foreground: oklch(0.97 0.004 90);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.93 0.25 124);
+}

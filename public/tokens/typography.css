@@ -1,0 +1,52 @@
+/* ============================================================
+   Crash Override — Typography Tokens
+   JetBrains Mono (titles) · Inter (body) · Geist Mono (code)
+   ============================================================ */
+
+:root {
+  /* ── Font families ────────────────────────────────────────── */
+  --font-title: 'JetBrains Mono', ui-monospace, monospace;   /* headings / brand */
+  --font-body:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:  'Geist Mono', ui-monospace, monospace;        /* code, data, terminal */
+  --font-docs:  'Inter', sans-serif;
+
+  /* ── Font sizes (px-anchored rem scale) ───────────────────── */
+  --text-10: 0.625rem;
+  --text-12: 0.75rem;
+  --text-13: 0.8125rem;
+  --text-14: 0.875rem;
+  --text-16: 1rem;
+  --text-18: 1.125rem;
+  --text-20: 1.25rem;
+  --text-24: 1.5rem;
+  --text-32: 2rem;
+  --text-36: 2.25rem;
+  --text-48: 3rem;
+  --text-72: 4.5rem;
+
+  /* Hero display — two tiers, fluid clamp */
+  --text-display-xl: clamp(48px, 5vw, 72px);   /* landing / product heroes */
+  --text-display-md: clamp(32px, 3.5vw, 48px); /* utility-page heroes */
+
+  /* ── Line heights ─────────────────────────────────────────── */
+  --leading-14: 14px;
+  --leading-16: 16px;
+  --leading-18: 18px;
+  --leading-20: 20px;
+  --leading-22: 22px;
+  --leading-30: 30px;
+  --leading-32: 32px;
+  --leading-48: 48px;
+  --leading-80: 80px;
+
+  /* ── Weights ──────────────────────────────────────────────── */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ── Tracking — headings tighten, labels widen ────────────── */
+  --tracking-tight: -0.02em;   /* headings */
+  --tracking-wide: 0.1em;
+  --tracking-widest: 0.18em;   /* uppercase eyebrow labels */
+}

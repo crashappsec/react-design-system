@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Crash Override — React Design System (shadcn registry)</title>
+<meta name="description" content="A public shadcn registry packaging the Crash Override Design System: brand theme + 60+ branded components and blocks. Install with npx shadcn add @crashoverride/<name>." />
+<link rel="icon" href="./favicon.svg" />
+<!-- Brand tokens: dark-first surfaces, Atomic-lime primary, JetBrains Mono / Inter / Geist Mono, sharp 4px radius. -->
+<link rel="stylesheet" href="./styles.css" />
+<style>
+  body {
+    margin: 0;
+    background: var(--surface-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 64px 24px 96px; }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-neon-400, #c6f135);
+    margin: 0 0 12px;
+  }
+  h1 {
+    font-family: var(--font-title);
+    font-size: clamp(30px, 5vw, 46px);
+    letter-spacing: -0.02em;
+    margin: 0 0 14px;
+  }
+  h2 {
+    font-family: var(--font-title);
+    font-size: 18px;
+    margin: 48px 0 14px;
+    border-bottom: 1px solid var(--border-hairline);
+    padding-bottom: 8px;
+  }
+  .lead { font-size: 18px; color: var(--text-secondary); margin: 0 0 8px; max-width: 60ch; }
+  .liturgy { font-family: var(--font-title); font-size: 15px; margin: 0 0 28px; }
+  .t-tag { color: var(--color-amber-400, #f5a623); }
+  .t-track { color: var(--color-neon-400, #c6f135); }
+  .t-trust { color: var(--color-teal-400, #2dd4bf); }
+  pre {
+    background: var(--surface-card);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-md, 4px);
+    padding: 16px 18px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-primary);
+    line-height: 1.55;
+  }
+  pre .c { color: var(--text-tertiary); }
+  .chip {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+    background: var(--surface-card);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-sm, 2px);
+    padding: 3px 8px;
+    margin: 0 4px 6px 0;
+  }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .links a {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--text-primary);
+    text-decoration: none;
+    background: var(--surface-card);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-sm, 2px);
+    padding: 6px 11px;
+  }
+  .links a:hover { border-color: var(--color-neon-400, #c6f135); color: var(--color-neon-400, #c6f135); }
+  a.inline { color: var(--color-neon-400, #c6f135); }
+  .muted { color: var(--text-tertiary); font-size: 13px; font-family: var(--font-mono); }
+  .count { color: var(--text-tertiary); font-weight: 400; font-family: var(--font-mono); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">Crash Override · shadcn registry</p>
+  <h1>React Design System</h1>
+  <p class="lead">The Crash Override Design System packaged as a public shadcn registry — a brand theme plus 60+ branded components and composite blocks, installable into any shadcn app.</p>
+  <p class="liturgy"><span class="t-tag">Tag.</span> <span class="t-track">Track.</span> <span class="t-trust">Trust.</span></p>
+
+  <h2>Consume the registry</h2>
+  <p>Point your <code class="chip">components.json</code> at the <code class="chip">@crashoverride</code> namespace:</p>
+  <pre><span class="c">// components.json</span>
+{
+  "registries": {
+    "@crashoverride": "https://crashappsec.github.io/react-design-system/r/{name}.json"
+  }
+}</pre>
+  <p>Install the theme first (it carries the brand tokens + fonts), then add components and blocks:</p>
+  <pre><span class="c"># the theme is the keystone — install it before anything else</span>
+npx shadcn add @crashoverride/theme
+
+<span class="c"># then any component or block</span>
+npx shadcn add @crashoverride/button
+npx shadcn add @crashoverride/stat-card-row</pre>
+
+  <h2>Brand in one breath</h2>
+  <p>Dark-first surfaces · Atomic-lime primary (Fandango in light) · JetBrains Mono (display) / Inter (body) / Geist Mono (mono) · sharp 4px radius. The <code class="chip">theme</code> item ships the oklch light+dark bridge so every component tracks both modes automatically.</p>
+
+  <h2>Available items <span class="count">(69)</span></h2>
+  <!-- Theme -->
+  <p class="muted">Theme (1)</p>
+  <p><code class="chip">theme</code></p>
+  <!-- Components -->
+  <p class="muted">Components (64)</p>
+  <p><code class="chip">layout</code> <code class="chip">divider</code> <code class="chip">separator</code> <code class="chip">button</code> <code class="chip">card</code> <code class="chip">badge</code> <code class="chip">input</code> <code class="chip">label</code> <code class="chip">field</code> <code class="chip">textarea</code> <code class="chip">select</code> <code class="chip">checkbox</code> <code class="chip">switch</code> <code class="chip">radio-group</code> <code class="chip">slider</code> <code class="chip">toggle</code> <code class="chip">toggle-group</code> <code class="chip">dialog</code> <code class="chip">sheet</code> <code class="chip">drawer</code> <code class="chip">popover</code> <code class="chip">tooltip</code> <code class="chip">dropdown-menu</code> <code class="chip">command</code> <code class="chip">combobox</code> <code class="chip">tabs</code> <code class="chip">accordion</code> <code class="chip">collapsible</code> <code class="chip">alert-dialog</code> <code class="chip">table</code> <code class="chip">alert</code> <code class="chip">progress</code> <code class="chip">skeleton</code> <code class="chip">avatar</code> <code class="chip">scroll-area</code> <code class="chip">spinner</code> <code class="chip">breadcrumb</code> <code class="chip">pagination</code> <code class="chip">navigation-menu</code> <code class="chip">context-menu</code> <code class="chip">hover-card</code> <code class="chip">menubar</code> <code class="chip">sidebar</code> <code class="chip">icon-button</code> <code class="chip">button-group</code> <code class="chip">aspect-ratio</code> <code class="chip">input-group</code> <code class="chip">input-otp</code> <code class="chip">native-select</code> <code class="chip">resizable</code> <code class="chip">carousel</code> <code class="chip">toaster</code> <code class="chip">calendar</code> <code class="chip">date-picker</code> <code class="chip">status-badge</code> <code class="chip">tag</code> <code class="chip">kbd</code> <code class="chip">empty</code> <code class="chip">item</code> <code class="chip">typography</code> <code class="chip">code-panel</code> <code class="chip">chart</code> <code class="chip">logo</code> <code class="chip">tagline</code></p>
+  <!-- Blocks -->
+  <p class="muted">Blocks (3)</p>
+  <p><code class="chip">stat-card-row</code> <code class="chip">service-detail-header</code> <code class="chip">service-table</code></p>
+  <!-- Hooks -->
+  <p class="muted">Hooks (1)</p>
+  <p><code class="chip">use-mobile</code></p>
+  <p class="muted">Each item is served as JSON at <code class="chip">/r/&lt;name&gt;.json</code>.</p>
+
+  <h2>Brand guidelines</h2>
+  <div class="links">
+    <a href="./guidelines/shadcn-theme.html">shadcn theme</a>
+    <a href="./guidelines/theme-light-dark.html">light / dark</a>
+    <a href="./guidelines/color-palette.html">color palette</a>
+    <a href="./guidelines/color-capabilities.html">color capabilities</a>
+    <a href="./guidelines/color-neon.html">neon</a>
+    <a href="./guidelines/color-neutrals.html">neutrals</a>
+    <a href="./guidelines/color-surface-status.html">surface &amp; status</a>
+    <a href="./guidelines/type-fonts.html">fonts</a>
+    <a href="./guidelines/type-display.html">display type</a>
+    <a href="./guidelines/type-body.html">body type</a>
+    <a href="./guidelines/type-mono.html">mono type</a>
+    <a href="./guidelines/spacing-scale.html">spacing scale</a>
+    <a href="./guidelines/spacing-radius.html">spacing &amp; radius</a>
+    <a href="./guidelines/brand-logos.html">logos</a>
+    <a href="./guidelines/brand-icon.html">icon</a>
+    <a href="./guidelines/brand-icons.html">icon set</a>
+    <a href="./guidelines/brand-capability-spine.html">capability spine</a>
+    <a href="./guidelines/animation-guidance.html">animation</a>
+    <a href="./guidelines/imagery-product-visuals.html">imagery</a>
+    <a href="./guidelines/diagram-build-lineage.html">build lineage</a>
+  </div>
+
+  <h2>Source</h2>
+  <p><a class="inline" href="https://github.com/crashappsec/react-design-system">crashappsec/react-design-system</a> — see the README for full consumption docs. The build plan and design spec live in the COMPASS repo under <code class="chip">docs/superpowers/plans/</code>.</p>
+  <p class="muted">License: to be finalized by Crash Override, Inc.</p>
+</div>
+</body>
+</html>
