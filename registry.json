@@ -521,6 +521,133 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Hierarchical path — muted mono links that lift to the foreground, bold current page. Composable shadcn structure with slot-based links and separators.",
+      "dependencies": ["@radix-ui/react-slot", "lucide-react"],
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Page navigation with prev/next + numbered cells in the brand mono voice — the active page lifts to the neon --primary fill, the rest stay quiet. Reuses the Button styling.",
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["@crashoverride/theme", "@crashoverride/button"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "NavigationMenu",
+      "description": "Horizontal site nav with mega-menu dropdowns — display-voice triggers that lift to --accent, a viewport floating on the --popover surface. Built on Radix NavigationMenu.",
+      "dependencies": [
+        "@radix-ui/react-navigation-menu",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "ContextMenu",
+      "description": "Right-click menu opened at the cursor — popover surface, hairline border, mono uppercase labels, destructive items mapped to the --destructive token. Built on Radix ContextMenu.",
+      "dependencies": ["@radix-ui/react-context-menu", "lucide-react"],
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "HoverCard",
+      "description": "Preview card on hover/focus for a user or repo mention — floats on the --popover surface with a hairline border and sharp brand radius. Built on Radix HoverCard.",
+      "dependencies": ["@radix-ui/react-hover-card"],
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "Desktop-style persistent menu bar — bordered bar with display-voice triggers, each menu dropping onto the --popover surface and sharing the dropdown row styling. Built on Radix Menubar.",
+      "dependencies": ["@radix-ui/react-menubar", "lucide-react"],
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "use-mobile",
+      "type": "registry:hook",
+      "title": "useIsMobile",
+      "description": "Reports whether the viewport is below the 768px mobile breakpoint. Used by the Sidebar to swap the docked rail for a Sheet on small screens.",
+      "files": [
+        {
+          "path": "src/registry/crashoverride/hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "Collapsible app left rail on the --sidebar-* tokens — provider + icon rail, neon left-border active state, Sheet on mobile. The full shadcn sidebar set composing Sheet, Tooltip, Separator, Skeleton, Button and Input.",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@crashoverride/theme",
+        "@crashoverride/use-mobile",
+        "@crashoverride/sheet",
+        "@crashoverride/tooltip",
+        "@crashoverride/separator",
+        "@crashoverride/skeleton",
+        "@crashoverride/button",
+        "@crashoverride/input"
+      ],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

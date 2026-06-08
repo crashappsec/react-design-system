@@ -147,11 +147,76 @@ import {
   Separator,
 } from "@/registry/crashoverride/ui/separator"
 import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/registry/crashoverride/ui/breadcrumb"
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+} from "@/registry/crashoverride/ui/pagination"
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+} from "@/registry/crashoverride/ui/navigation-menu"
+import {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuLabel,
+  ContextMenuItem,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+} from "@/registry/crashoverride/ui/context-menu"
+import {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent,
+} from "@/registry/crashoverride/ui/hover-card"
+import {
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
+  MenubarItem,
+  MenubarSeparator,
+  MenubarShortcut,
+} from "@/registry/crashoverride/ui/menubar"
+import {
+  SidebarProvider,
+  Sidebar,
+  SidebarHeader,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+  SidebarMenuBadge,
+  SidebarInset,
+  SidebarTrigger,
+} from "@/registry/crashoverride/ui/sidebar"
+import {
   Search,
   CircleCheck,
   TriangleAlert,
   Info,
   CircleX,
+  Cloud,
+  Box as BoxIcon,
+  ShieldCheck,
 } from "lucide-react"
 
 /**
@@ -816,6 +881,226 @@ export function App() {
             Saving…
           </Button>
         </Group>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Breadcrumb
+        </h2>
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">Services</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">prod</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>prod-bandwidth-system</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Pagination
+        </h2>
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious href="#" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#" isActive>
+                2
+              </PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">3</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">12</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNext href="#" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          NavigationMenu
+        </h2>
+        <NavigationMenu>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Product</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="grid w-[280px] gap-1 p-2">
+                  <NavigationMenuLink href="#">
+                    <div className="font-medium">Compass</div>
+                    <div className="text-muted-foreground">
+                      Repository health across portfolios.
+                    </div>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink href="#">
+                    <div className="font-medium">Beacon</div>
+                    <div className="text-muted-foreground">
+                      Continuous llms.txt + reports.
+                    </div>
+                  </NavigationMenuLink>
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="#">Docs</NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Menubar
+        </h2>
+        <Menubar>
+          <MenubarMenu>
+            <MenubarTrigger>File</MenubarTrigger>
+            <MenubarContent>
+              <MenubarItem>
+                New scan<MenubarShortcut>⌘N</MenubarShortcut>
+              </MenubarItem>
+              <MenubarItem>
+                Open<MenubarShortcut>⌘O</MenubarShortcut>
+              </MenubarItem>
+              <MenubarSeparator />
+              <MenubarItem variant="destructive">Delete</MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+          <MenubarMenu>
+            <MenubarTrigger>Edit</MenubarTrigger>
+            <MenubarContent>
+              <MenubarItem>
+                Undo<MenubarShortcut>⌘Z</MenubarShortcut>
+              </MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+        </Menubar>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          ContextMenu
+        </h2>
+        <ContextMenu>
+          <ContextMenuTrigger className="flex h-28 max-w-md items-center justify-center rounded-md border border-dashed border-border text-sm text-muted-foreground">
+            Right-click this region
+          </ContextMenuTrigger>
+          <ContextMenuContent>
+            <ContextMenuLabel>Service</ContextMenuLabel>
+            <ContextMenuItem>
+              Open<ContextMenuShortcut>⌘O</ContextMenuShortcut>
+            </ContextMenuItem>
+            <ContextMenuItem>Rename</ContextMenuItem>
+            <ContextMenuSeparator />
+            <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+          </ContextMenuContent>
+        </ContextMenu>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          HoverCard
+        </h2>
+        <div className="text-sm text-muted-foreground">
+          Reported by{" "}
+          <HoverCard>
+            <HoverCardTrigger asChild>
+              <a href="#" className="font-mono text-foreground underline">
+                @savannah
+              </a>
+            </HoverCardTrigger>
+            <HoverCardContent>
+              <div className="flex items-center gap-3">
+                <Avatar size="md">
+                  <AvatarFallback>{initials("Savannah Nguyen")}</AvatarFallback>
+                </Avatar>
+                <div>
+                  <div className="font-semibold text-foreground">
+                    Savannah Nguyen
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    Maintainer · 142 repos
+                  </div>
+                </div>
+              </div>
+            </HoverCardContent>
+          </HoverCard>
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Sidebar
+        </h2>
+        <div className="h-72 max-w-2xl overflow-hidden rounded-md border border-border">
+          <SidebarProvider className="min-h-0 h-full">
+            <Sidebar collapsible="icon" className="absolute">
+              <SidebarHeader>
+                <span className="font-display text-sm font-bold tracking-[-0.01em] text-sidebar-foreground group-data-[collapsible=icon]:hidden">
+                  Crash Override
+                </span>
+              </SidebarHeader>
+              <SidebarContent>
+                <SidebarGroup>
+                  <SidebarGroupLabel>Catalog</SidebarGroupLabel>
+                  <SidebarMenu>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton isActive tooltip="Services">
+                        <Cloud />
+                        <span>Services</span>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton tooltip="Packages">
+                        <BoxIcon />
+                        <span>Packages</span>
+                      </SidebarMenuButton>
+                      <SidebarMenuBadge>12</SidebarMenuBadge>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton tooltip="Policies">
+                        <ShieldCheck />
+                        <span>Policies</span>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  </SidebarMenu>
+                </SidebarGroup>
+              </SidebarContent>
+            </Sidebar>
+            <SidebarInset>
+              <div className="flex items-center gap-2 border-b border-border p-3">
+                <SidebarTrigger />
+                <span className="font-mono text-xs text-muted-foreground">
+                  prod-bandwidth-system
+                </span>
+              </div>
+              <div className="p-4 text-sm text-muted-foreground">
+                Toggle the rail with the button (or ⌘B).
+              </div>
+            </SidebarInset>
+          </SidebarProvider>
+        </div>
       </section>
     </div>
   )
