@@ -873,6 +873,72 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "typography",
+      "type": "registry:ui",
+      "title": "Typography",
+      "description": "Prose primitives — H1, H2, H3, P, Lead, Blockquote, InlineCode, Muted. Headings ride the display face; inline code is mono; muted variants resolve to --muted-foreground. className-first.",
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/typography.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "code-panel",
+      "type": "registry:ui",
+      "title": "CodePanel",
+      "description": "The signature developer surface: a terminal/BBS-aesthetic code block on the slate --card surface with optional macOS traffic-light chrome. Mono voice, hairline border; code body lives in a <pre>.",
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/code-panel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "Thin Recharts wrapper that wires the brand capability palette (Monitor/Inspect/Tag/Track/AI) into every chart via --chart-1..5. ChartContainer injects the palette + responsive sizing; ChartTooltip is the branded slate tooltip.",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "logo",
+      "type": "registry:ui",
+      "title": "Logo",
+      "description": "Brand lockup: the needle mark (inline SVG drawn in currentColor) with an optional JetBrains-Mono wordmark. Props: size, withWordmark. aria-label \"Crash Override\".",
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/logo.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tagline",
+      "type": "registry:ui",
+      "title": "Tagline",
+      "description": "The brand liturgy \"Tag. Track. Trust.\" as the traffic-light device: three words on a black plate, red -> amber -> green, carrying the .t-tag/.t-track/.t-trust semantic hooks. Display face.",
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/tagline.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

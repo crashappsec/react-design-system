@@ -240,6 +240,24 @@ import { Kbd } from "@/registry/crashoverride/ui/kbd"
 import { Empty } from "@/registry/crashoverride/ui/empty"
 import { Item } from "@/registry/crashoverride/ui/item"
 import {
+  H1,
+  H2,
+  H3,
+  P,
+  Lead,
+  Blockquote,
+  InlineCode,
+  Muted,
+} from "@/registry/crashoverride/ui/typography"
+import { CodePanel } from "@/registry/crashoverride/ui/code-panel"
+import {
+  ChartContainer,
+  ChartTooltip,
+} from "@/registry/crashoverride/ui/chart"
+import { Logo } from "@/registry/crashoverride/ui/logo"
+import { Tagline } from "@/registry/crashoverride/ui/tagline"
+import { BarChart, Bar, XAxis, CartesianGrid } from "recharts"
+import {
   Search,
   CircleCheck,
   TriangleAlert,
@@ -1382,6 +1400,74 @@ export function App() {
             actions={<StatusBadge status="healthy" />}
           />
         </Stack>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Typography
+        </h2>
+        <Stack className="max-w-2xl gap-3">
+          <H1>Tag. Track. Trust.</H1>
+          <Lead>The Data Plane for Software in the AI Era.</Lead>
+          <H2>We monitor, inspect, tag and track.</H2>
+          <H3>Deterministic. No inference.</H3>
+          <P>
+            Body copy in Inter. Run <InlineCode>chalk insert</InlineCode> to
+            beacon an artifact back to the console.
+          </P>
+          <Blockquote>You can't secure what you can't see.</Blockquote>
+          <Muted>last seen 14:02 · us-east-1</Muted>
+        </Stack>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          CodePanel
+        </h2>
+        <CodePanel title="bash" className="max-w-xl">
+          {`npx shadcn add @crashoverride/theme\nnpx shadcn add @crashoverride/button`}
+        </CodePanel>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Chart
+        </h2>
+        <div className="max-w-xl">
+          <ChartContainer className="h-56">
+            <BarChart
+              data={[
+                { label: "Mon", value: 8 },
+                { label: "Tue", value: 12 },
+                { label: "Wed", value: 6 },
+                { label: "Thu", value: 15 },
+                { label: "Fri", value: 11 },
+              ]}
+            >
+              <CartesianGrid vertical={false} />
+              <XAxis dataKey="label" tickLine={false} axisLine={false} />
+              <ChartTooltip />
+              <Bar dataKey="value" fill="var(--chart-1)" radius={2} />
+            </BarChart>
+          </ChartContainer>
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Logo
+        </h2>
+        <Group className="items-center gap-8">
+          <Logo size={40} />
+          <Logo size={28} withWordmark />
+        </Group>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Tagline
+        </h2>
+        <Tagline />
       </section>
 
       <Toaster richColors closeButton />
