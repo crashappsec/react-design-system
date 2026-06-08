@@ -2,6 +2,19 @@ import { useState } from "react"
 import { Stack, Group, Center, Box, Grid } from "@/registry/crashoverride/ui/layout"
 import { Divider } from "@/registry/crashoverride/ui/divider"
 import { Button } from "@/registry/crashoverride/ui/button"
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/registry/crashoverride/ui/card"
+import { Badge } from "@/registry/crashoverride/ui/badge"
+import { Input } from "@/registry/crashoverride/ui/input"
+import { Label } from "@/registry/crashoverride/ui/label"
+import { Field } from "@/registry/crashoverride/ui/field"
+import { Textarea } from "@/registry/crashoverride/ui/textarea"
 
 /**
  * Specimen app — local visual QA for the Crash Override registry.
@@ -92,6 +105,90 @@ export function App() {
           <Center className="h-24 bg-card border border-border rounded-md">
             <span className="font-mono text-sm">centered</span>
           </Center>
+        </Stack>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Card
+        </h2>
+        <Grid className="grid-cols-3">
+          <Card>
+            <CardHeader>
+              <CardTitle>Plain card</CardTitle>
+              <CardDescription>hairline border, no shadow</CardDescription>
+            </CardHeader>
+            <CardContent className="text-sm text-muted-foreground">
+              Contrast comes from the border, never a background lift.
+            </CardContent>
+          </Card>
+          <Card accent="magenta" interactive>
+            <CardHeader>
+              <CardTitle>Capability card</CardTitle>
+              <CardDescription>accent bar + hover</CardDescription>
+            </CardHeader>
+            <CardContent className="text-sm text-muted-foreground">
+              Hover me — border brightens, surface lifts.
+            </CardContent>
+            <CardFooter>
+              <Button size="sm" variant="secondary">
+                Inspect
+              </Button>
+            </CardFooter>
+          </Card>
+          <Card accent="neon">
+            <CardHeader>
+              <CardTitle>Neon accent</CardTitle>
+              <CardDescription>lime capability bar</CardDescription>
+            </CardHeader>
+            <CardContent className="text-sm text-muted-foreground">
+              Any palette key or CSS colour works.
+            </CardContent>
+          </Card>
+        </Grid>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Badge
+        </h2>
+        <Group className="flex-wrap">
+          <Badge tone="neon" dot>
+            active
+          </Badge>
+          <Badge tone="cobalt">enterprise</Badge>
+          <Badge tone="magenta" variant="outline">
+            inspect
+          </Badge>
+          <Badge tone="amber">3 expiring</Badge>
+          <Badge tone="teal" variant="outline">
+            healthy
+          </Badge>
+          <Badge tone="danger" dot>
+            critical
+          </Badge>
+          <Badge>neutral</Badge>
+        </Group>
+      </section>
+
+      <section className="mb-12">
+        <h2 className="text-sm uppercase tracking-wider text-muted-foreground mb-4 font-mono">
+          Forms — Input / Label / Field / Textarea
+        </h2>
+        <Stack className="gap-4 max-w-md">
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="bare-email">Work email</Label>
+            <Input id="bare-email" type="email" placeholder="you@company.com" />
+          </div>
+          <Field label="API key" htmlFor="api-key" hint="Read-only token" required>
+            <Input id="api-key" placeholder="ghp_…" />
+          </Field>
+          <Field label="Email" htmlFor="err-email" error="Required">
+            <Input id="err-email" type="email" placeholder="you@company.com" />
+          </Field>
+          <Field label="Incident notes" htmlFor="notes">
+            <Textarea id="notes" rows={4} placeholder="Describe the incident…" />
+          </Field>
         </Stack>
       </section>
     </div>

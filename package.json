@@ -12,6 +12,7 @@
     "registry:build": "shadcn build"
   },
   "dependencies": {
+    "@radix-ui/react-label": "^2.1.9",
     "@radix-ui/react-slot": "^1.2.5",
     "@tailwindcss/vite": "^4.3.0",
     "class-variance-authority": "^0.7.1",

@@ -61,6 +61,86 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Flat surface primitive — slate card bg, hairline border, no heavy shadow. Optional capability accent bar and interactive hover.",
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Status / label pill keyed to the brand palette. Lowercase mono voice, soft + outline fills, optional leading dot.",
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"],
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Text field on the dark surface — hairline --input border, neon focus ring, sharp brand radius.",
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Form field label in the brand's uppercase mono voice. Built on Radix Label for click-to-focus.",
+      "dependencies": ["@radix-ui/react-label"],
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Composes Label + control + help/error into one accessible field. Wires aria-describedby and aria-invalid onto the control.",
+      "registryDependencies": ["@crashoverride/theme", "@crashoverride/label"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multi-line text input on the dark surface — hairline --input border, neon focus ring, vertical resize.",
+      "registryDependencies": ["@crashoverride/theme"],
+      "files": [
+        {
+          "path": "src/registry/crashoverride/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
