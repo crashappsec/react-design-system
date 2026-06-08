@@ -11,6 +11,7 @@ const config: StorybookConfig = {
     "@storybook/addon-a11y",
   ],
   framework: "@storybook/react-vite",
+  staticDirs: ["../public"],
 }
 
 export default config

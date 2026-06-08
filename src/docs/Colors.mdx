@@ -1,33 +1,119 @@
 import { Meta } from "@storybook/addon-docs/blocks"
-import { Swatch, TokenSwatch, Palette } from "./Swatches"
+import { Swatch, TokenSwatch, ScaleSwatch, Palette } from "./Swatches"
 
 <Meta title="Foundations/Colors" />
 
 # Colors
 
-The palette is built in three layers: the **brand colours** (the literal Brand Book
-values), the **capability palette** (`--chart-1…5`, colour-coding the product spine), and
-the **semantic shadcn tokens** that every component consumes. The semantic tokens
-re-resolve per theme — flip the **theme toggle in the toolbar** and the semantic swatches
-below recolour live.
+The full Crash Override palette. It is built in layers: the **official brand colours**
+(the literal Brand Book values — five colours, no blue), the **brand scales** that ramp
+each accent for hover/text/tint use, a set of **status, terminal, and code** utility hues,
+the **capability palette** (`--chart-1…5`, colour-coding the product spine), and the
+**semantic shadcn tokens** that every component consumes.
 
-## Brand colours
+Every fixed token below is painted from its literal value and shows its **token name +
+hex/value**, cross-checked against `tokens/colors.css`. The capability and semantic tokens
+re-resolve per theme — flip the **theme toggle in the toolbar** and those swatches recolour
+live.
 
-The official Crash Override palette (Brand Book v1). Five colours, no blue.
+## Official brand
+
+The canonical Brand Book v1 palette. Five colours, no blue. Everything else in the system
+is a tint, shade, or alias of these.
 
 <Palette>
-  <Swatch value="#B3FF00" name="Atomic lime" note="Primary action · Track" />
-  <Swatch value="#823AA4" name="Fandango" note="Purple accent · Monitor" />
-  <Swatch value="#FF3F86" name="Jazzberry" note="Hot pink · Inspect" />
-  <Swatch value="#E8E2DC" name="Thunder" note="Warm off-white neutral" />
-  <Swatch value="#0B1221" name="Black" note="The brand page surface" />
+  <ScaleSwatch name="--color-co-black" value="#0B1221" note="Black — the brand surface" />
+  <ScaleSwatch name="--color-fandango" value="#823AA4" note="Purple accent · Monitor" />
+  <ScaleSwatch name="--color-jazzberry" value="#FF3F86" note="Hot pink · Inspect" />
+  <ScaleSwatch name="--color-thunder" value="#E8E2DC" note="Warm off-white neutral" />
+  <ScaleSwatch name="--color-atomic-lime" value="#B3FF00" note="Signature accent · Track" />
+</Palette>
+
+## Neutrals — Thunder-warm grey scale
+
+A single warm grey ramp from Thunder white down to brand Black. Navy-tinted at the dark end
+so panels and borders harmonise with the `#0B1221` surface.
+
+<Palette>
+  <ScaleSwatch name="--color-white" value="#F7F6F5" note="Lightest text" />
+  <ScaleSwatch name="--color-grey-100" value="#E8E2DC" note="Thunder · secondary light text" />
+  <ScaleSwatch name="--color-grey-200" value="#CFC9C3" note="Light borders" />
+  <ScaleSwatch name="--color-grey-300" value="#A39E99" note="Muted text" />
+  <ScaleSwatch name="--color-grey-400" value="#8A857F" note="Subtle text" />
+  <ScaleSwatch name="--color-grey-500" value="#6E6A66" note="Mid-tone text" />
+  <ScaleSwatch name="--color-grey-600" value="#565259" note="Captions, meta" />
+  <ScaleSwatch name="--color-grey-700" value="#3A3E4E" note="Inactive (navy-tinted)" />
+  <ScaleSwatch name="--color-grey-800" value="#1E2336" note="Borders (navy)" />
+  <ScaleSwatch name="--color-grey-850" value="#161B2E" note="Raised panel surfaces" />
+  <ScaleSwatch name="--color-grey-900" value="#0F1426" note="Deep card surfaces" />
+</Palette>
+
+## Atomic lime scale (neon — Track)
+
+The signature accent, ramped. `neon-400` is THE Atomic lime; lighter steps are hover/tint
+states, darker steps are text-on-light. Token names stay `neon-*` for back-compat.
+
+<Palette>
+  <ScaleSwatch name="--color-neon-100" value="#F2FFCC" />
+  <ScaleSwatch name="--color-neon-200" value="#E3FF99" />
+  <ScaleSwatch name="--color-neon-300" value="#CFFF66" note="Hover states" />
+  <ScaleSwatch name="--color-neon-400" value="#B3FF00" note="THE Atomic lime · primary accent" />
+  <ScaleSwatch name="--color-neon-500" value="#9FE600" note="Mid lime" />
+  <ScaleSwatch name="--color-neon-600" value="#8FCC00" />
+  <ScaleSwatch name="--color-neon-800" value="#5E8A00" />
+  <ScaleSwatch name="--color-neon-900" value="#466700" />
+</Palette>
+
+## Fandango purple scale (cobalt — Monitor)
+
+The purple accent, ramped. Token names stay `cobalt-*` for back-compat (the brand has NO
+blue). Official-named `fandango-*` aliases are provided for AA text on light tints.
+
+<Palette>
+  <ScaleSwatch name="--color-cobalt-100" value="#F1E7F7" />
+  <ScaleSwatch name="--color-cobalt-200" value="#DDC4E9" />
+  <ScaleSwatch name="--color-cobalt-300" value="#BE8FD4" />
+  <ScaleSwatch name="--color-cobalt-400" value="#A05FC0" note="Text on dark" />
+  <ScaleSwatch name="--color-cobalt-500" value="#823AA4" note="Fandango (brand purple)" />
+  <ScaleSwatch name="--color-cobalt-600" value="#6A2E86" />
+  <ScaleSwatch name="--color-fandango-100" value="#F1E7F7" note="Alias" />
+  <ScaleSwatch name="--color-fandango-300" value="#BE8FD4" note="Alias" />
+  <ScaleSwatch name="--color-fandango-500" value="#823AA4" note="Alias" />
+  <ScaleSwatch name="--color-fandango-700" value="#5A2173" note="AA text on light tints" />
+</Palette>
+
+## Jazzberry pink scale (magenta — Inspect)
+
+The hot-pink accent. Token names stay `magenta-*`; official-named `jazzberry-*` aliases are
+provided. `400` and `500` are both the brand Jazzberry; darker steps are text-on-light.
+
+<Palette>
+  <ScaleSwatch name="--color-magenta-100" value="#FFE3EE" />
+  <ScaleSwatch name="--color-magenta-400" value="#FF3F86" note="Jazzberry" />
+  <ScaleSwatch name="--color-magenta-500" value="#FF3F86" />
+  <ScaleSwatch name="--color-magenta-700" value="#B01E5A" note="AA text on magenta-100" />
+  <ScaleSwatch name="--color-magenta-900" value="#6E0E38" note="Headings on light tints" />
+  <ScaleSwatch name="--color-jazzberry-100" value="#FFE3EE" note="Alias" />
+  <ScaleSwatch name="--color-jazzberry-500" value="#FF3F86" note="Alias" />
+  <ScaleSwatch name="--color-jazzberry-700" value="#B01E5A" note="Alias" />
+</Palette>
+
+## Thunder ramp
+
+The warm off-white neutral, ramped for light surfaces and hairline borders.
+
+<Palette>
+  <ScaleSwatch name="--color-thunder-100" value="#F7F5F2" />
+  <ScaleSwatch name="--color-thunder-300" value="#EDE9E4" />
+  <ScaleSwatch name="--color-thunder-500" value="#E8E2DC" note="Thunder" />
+  <ScaleSwatch name="--color-thunder-700" value="#BDB7B0" />
 </Palette>
 
 ## Capability palette (`--chart-1…5`)
 
 The product spine, colour-coded. Used as 3px accent bars, eyebrow labels, and chart
 series — rarely as flat fills. These resolve from theme tokens, so they also track
-light/dark.
+light/dark — toggle the toolbar to watch them flip.
 
 <Palette>
   <TokenSwatch token="--chart-1" bgClass="bg-[var(--chart-1)]" label="Monitor" />
@@ -35,6 +121,98 @@ light/dark.
   <TokenSwatch token="--chart-3" bgClass="bg-[var(--chart-3)]" label="Tag" />
   <TokenSwatch token="--chart-4" bgClass="bg-[var(--chart-4)]" label="Track" />
   <TokenSwatch token="--chart-5" bgClass="bg-[var(--chart-5)]" label="AI" />
+</Palette>
+
+## Status / utility
+
+Roles for errors, warnings, and inline notices. Reds for destructive/error, yellows and
+orange for warnings and caution. (Note: `amber`/`teal` token names are deprecated aliases
+that now resolve to Fandango / Jazzberry — they are not distinct hues.)
+
+<Palette>
+  <ScaleSwatch name="--color-red-200" value="#FFE0C9" note="Error tint bg" />
+  <ScaleSwatch name="--color-red-800" value="#F44747" note="Error" />
+  <ScaleSwatch name="--color-red-900" value="#D16969" note="Error (muted)" />
+  <ScaleSwatch name="--color-red-deep" value="#991B1B" note="Deep error" />
+  <ScaleSwatch name="--color-yellow-200" value="#FFFFAA" note="Warning tint" />
+  <ScaleSwatch name="--color-yellow-400" value="#DCDCAA" note="Warning" />
+  <ScaleSwatch name="--color-yellow-700" value="#CE9178" note="Caution" />
+  <ScaleSwatch name="--color-yellow-900" value="#B5854B" note="Deep caution" />
+  <ScaleSwatch name="--color-orange-600" value="#CE9178" note="Orange / caution" />
+</Palette>
+
+## Traffic lights
+
+The macOS terminal traffic-light dots — used as window-chrome decoration on the CodePanel
+device, and as the Tagline status colours (Tag / Track / Inspect signalling).
+
+<Palette>
+  <ScaleSwatch name="--color-traffic-red" value="#ff5f56" note="Stop / attention" />
+  <ScaleSwatch name="--color-traffic-yellow" value="#ffbd2e" note="Caution / in-motion" />
+  <ScaleSwatch name="--color-traffic-green" value="#27c93f" note="Go / healthy" />
+</Palette>
+
+## Modem phosphor
+
+The BBS / modem phosphor lime (dimmer and warmer than the neon accent) plus its error red —
+used for the retro terminal motif.
+
+<Palette>
+  <ScaleSwatch name="--color-modem-phosphor" value="#9FE600" note="Phosphor lime" />
+  <ScaleSwatch name="--color-modem-error" value="#ff6b6b" note="Modem error" />
+</Palette>
+
+## Syntax highlighting
+
+The token colours for code on the navy code surface.
+
+<Palette>
+  <ScaleSwatch name="--color-syntax-keyword" value="#FF6FA8" note="Keys, keywords (jazzberry-light)" />
+  <ScaleSwatch name="--color-syntax-string" value="#A5D6FF" note="Strings, URLs" />
+  <ScaleSwatch name="--color-syntax-function" value="#C79BFF" note="Functions (fandango-light)" />
+  <ScaleSwatch name="--color-syntax-comment" value="hsl(225, 12%, 58%)" note="Muted navy-grey" />
+</Palette>
+
+## Code surfaces
+
+The code-block panel surface, lifted off the brand black so code harmonises with the page.
+
+<Palette>
+  <ScaleSwatch name="--color-code-bg" value="#0E0F10" note="Code panel background" />
+  <ScaleSwatch name="--color-code-border" value="rgba(255, 255, 255, 0.10)" on="#0E0F10" note="Code panel hairline" />
+  <ScaleSwatch name="--color-code-text" value="hsl(0, 0%, 92%)" note="Code text" />
+</Palette>
+
+## Dark surfaces
+
+The official Black `#0B1221` is THE surface for every content area. Cards and sections pop
+via hairline borders and structure, never via a background lift.
+
+<Palette>
+  <ScaleSwatch name="--color-dark-surface" value="#0B1221" note="Page + card bg (Black)" />
+  <ScaleSwatch name="--color-dark-surface-secondary" value="#2A2E3A" note="Raised cards / inputs / terminals" />
+  <ScaleSwatch name="--color-dark-surface-invert" value="#353B49" note="Hover / selection bg" />
+  <ScaleSwatch name="--color-dark-surface-green" value="#11161F" note="Lab / innovation tint" />
+</Palette>
+
+## Alpha overlays
+
+Translucent brand washes for glows, hover fills, and tinted panels. Pattern:
+`--color-{brand}-{base}-{percent×100}`. Shown here over the brand black so the opacity reads.
+
+<Palette>
+  <ScaleSwatch name="--color-neon-400-5" value="rgba(179, 255, 0, 0.05)" on="#0B1221" />
+  <ScaleSwatch name="--color-neon-400-10" value="rgba(179, 255, 0, 0.10)" on="#0B1221" />
+  <ScaleSwatch name="--color-neon-400-15" value="rgba(179, 255, 0, 0.15)" on="#0B1221" />
+  <ScaleSwatch name="--color-neon-400-20" value="rgba(179, 255, 0, 0.20)" on="#0B1221" />
+  <ScaleSwatch name="--color-neon-400-30" value="rgba(179, 255, 0, 0.30)" on="#0B1221" />
+  <ScaleSwatch name="--color-cobalt-500-8" value="rgba(130, 58, 164, 0.10)" on="#0B1221" />
+  <ScaleSwatch name="--color-cobalt-500-15" value="rgba(130, 58, 164, 0.20)" on="#0B1221" />
+  <ScaleSwatch name="--color-cobalt-500-20" value="rgba(130, 58, 164, 0.28)" on="#0B1221" />
+  <ScaleSwatch name="--color-magenta-400-10" value="rgba(255, 63, 134, 0.10)" on="#0B1221" />
+  <ScaleSwatch name="--color-magenta-400-15" value="rgba(255, 63, 134, 0.15)" on="#0B1221" />
+  <ScaleSwatch name="--color-magenta-400-20" value="rgba(255, 63, 134, 0.20)" on="#0B1221" />
+  <ScaleSwatch name="--color-white-8" value="rgba(255, 255, 255, 0.08)" on="#0B1221" note="Hairline wash" />
 </Palette>
 
 ## Semantic tokens (shadcn bridge)

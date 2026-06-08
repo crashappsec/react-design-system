@@ -1,0 +1,157 @@
+import { Meta } from "@storybook/addon-docs/blocks"
+import { AssetCard, AssetGrid } from "./Swatches"
+import { Logo } from "@/registry/crashoverride/ui/logo"
+
+<Meta title="Foundations/Brand Assets" />
+
+# Brand Assets
+
+The official Crash Override logo art, shipped with the design system. Each mark is rendered
+at a real size on an appropriate backdrop — white-fill marks on the brand black, black-fill
+marks on Thunder white — so the contrast you would actually ship is what you see here.
+
+Files live in `public/brand-assets/` and are served by Storybook via `staticDirs`. Pull the
+exact file you need; do not recolour or redraw the art.
+
+## Icon mark
+
+The "needle" mark on its own. Use it for favicons, app icons, avatars, and tight spaces
+where the wordmark would not be legible.
+
+<AssetGrid>
+  <AssetCard
+    src="/brand-assets/logos/icon-color.svg"
+    alt="Crash Override icon, full colour"
+    label="Icon — colour"
+    bg="dark"
+    note="Default mark. Use on dark surfaces (the brand black)."
+  />
+  <AssetCard
+    src="/brand-assets/logos/icon-white.svg"
+    alt="Crash Override icon, white"
+    label="Icon — white"
+    bg="dark"
+    note="Monochrome knock-out. Use on dark or photographic backgrounds."
+  />
+  <AssetCard
+    src="/brand-assets/logos/icon-black-bg.svg"
+    alt="Crash Override icon on black tile"
+    label="Icon — black tile"
+    bg="light"
+    note="Pre-composited dark tile. Use as an app icon / avatar on light pages."
+  />
+  <AssetCard
+    src="/brand-assets/logos/icon-color.png"
+    alt="Crash Override icon, full colour (PNG)"
+    label="Icon — colour (PNG)"
+    bg="dark"
+    note="Raster fallback where SVG is unsupported."
+  />
+  <AssetCard
+    src="/brand-assets/logos/icon-white.png"
+    alt="Crash Override icon, white (PNG)"
+    label="Icon — white (PNG)"
+    bg="dark"
+    note="Raster knock-out for email / legacy clients."
+  />
+  <AssetCard
+    src="/brand-assets/logos/icon-black-bg.png"
+    alt="Crash Override icon on black tile (PNG)"
+    label="Icon — black tile (PNG)"
+    bg="light"
+    note="Raster app-icon tile."
+  />
+</AssetGrid>
+
+## Icon + wordmark lockup
+
+The mark paired with the wordmark — the primary horizontal lockup for headers, footers, and
+documents. Choose the fill that contrasts with your surface.
+
+<AssetGrid>
+  <AssetCard
+    src="/brand-assets/logos/iconlogo-white.png"
+    alt="Crash Override icon + wordmark, white"
+    label="Lockup — white"
+    bg="dark"
+    height={64}
+    note="Use on dark surfaces — the default product header lockup."
+  />
+  <AssetCard
+    src="/brand-assets/logos/iconlogo-black.png"
+    alt="Crash Override icon + wordmark, black"
+    label="Lockup — black"
+    bg="light"
+    height={64}
+    note="Use on light surfaces — docs, print, light-theme pages."
+  />
+</AssetGrid>
+
+## Wordmark
+
+The "Crash Override" wordmark on its own, for places that already carry the mark elsewhere
+(e.g. a nav that shows the icon and needs the name set in type).
+
+<AssetGrid>
+  <AssetCard
+    src="/brand-assets/logos/logo-white.png"
+    alt="Crash Override wordmark, white"
+    label="Wordmark — white"
+    bg="dark"
+    height={48}
+    note="Use on dark surfaces."
+  />
+  <AssetCard
+    src="/brand-assets/logos/logo-black.png"
+    alt="Crash Override wordmark, black"
+    label="Wordmark — black"
+    bg="light"
+    height={48}
+    note="Use on light surfaces."
+  />
+</AssetGrid>
+
+## Code logo (`<Logo />`)
+
+The in-repo React component (`@/registry/crashoverride/ui/logo`). The mark is inline SVG
+drawn in `currentColor`, so it tints to the surrounding text colour — lime on the dark
+theme, fandango on light. This is the **code version**: prefer it in the app so the mark
+themes automatically; use the static files above for favicons, social images, and print.
+
+<div className="flex flex-wrap items-center gap-8 rounded-md border border-[var(--border)] p-6">
+  <Logo size={48} />
+  <Logo size={40} withWordmark />
+  <Logo size={28} withWordmark />
+</div>
+
+## Illustrations
+
+Larger brand artwork. The CRT television is the hero illustration (light and dark variants);
+`og-default` is the default social / Open Graph share image.
+
+<AssetGrid>
+  <AssetCard
+    src="/brand-assets/illustrations/crt-tv.svg"
+    alt="CRT television illustration"
+    label="CRT TV"
+    bg="light"
+    height={200}
+    note="Hero illustration — light variant."
+  />
+  <AssetCard
+    src="/brand-assets/illustrations/crt-tv-dark.svg"
+    alt="CRT television illustration, dark"
+    label="CRT TV — dark"
+    bg="dark"
+    height={200}
+    note="Hero illustration — dark variant."
+  />
+  <AssetCard
+    src="/brand-assets/illustrations/og-default.svg"
+    alt="Default Open Graph social image"
+    label="OG default"
+    bg="surface"
+    height={200}
+    note="Default social / Open Graph share image (1200×630)."
+  />
+</AssetGrid>
