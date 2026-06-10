@@ -15,7 +15,7 @@
 
 :root {
   /* ── Official brand colours (canonical) ───────────────────── */
-  --color-co-black: #0B1221;     /* Black — the brand dark / surface */
+  --color-co-black: #161616;     /* Black — the brand dark / surface */
   --color-fandango: #823AA4;     /* Fandango — primary purple accent */
   --color-jazzberry: #FF3F86;    /* Jazzberry — hot-pink accent */
   --color-thunder: #E8E2DC;      /* Thunder — warm off-white neutral */
@@ -112,16 +112,16 @@
   --color-syntax-function: #C79BFF;  /* fandango-light — functions */
   --color-syntax-comment: hsl(225, 12%, 58%);   /* muted navy-grey */
 
-  /* ── Code block surfaces — lifted navy off the #0B1221 brand
+  /* ── Code block surfaces — lifted navy off the #161616 brand
      black, so code panels harmonise with the surface (same family). ── */
   --color-code-bg: #0E0F10;
   --color-code-border: rgba(255, 255, 255, 0.10);
   --color-code-text: hsl(0, 0%, 92%);
 
-  /* ── Dark surfaces — the official Black #0B1221 is THE surface for
+  /* ── Dark surfaces — the official Black #161616 is THE surface for
      every content area. Cards & sections pop via hairline borders +
      structure, never via a bg lift. ── */
-  --color-dark-surface: #0B1221;            /* page + card background (Black) */
+  --color-dark-surface: var(--color-co-black);            /* page + card background (Black) */
   --color-dark-surface-secondary: #2A2E3A;  /* slate — raised cards / inputs / terminals */
   --color-dark-surface-invert: #353B49;     /* hover / selection bg */
   --color-dark-surface-green: #11161F;      /* lab / innovation tint */

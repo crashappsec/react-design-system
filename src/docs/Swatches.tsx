@@ -151,7 +151,7 @@ export function AssetCard({
 }) {
   const panelBg =
     bg === "dark"
-      ? "#0B1221"
+      ? "#161616"
       : bg === "light"
         ? "#F7F6F5"
         : bg === "surface"
