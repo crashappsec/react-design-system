@@ -54,6 +54,36 @@ npx shadcn add @crashoverride/stat-card-row   # a composite block
 Each item resolves to JSON served from GitHub Pages at
 `https://crashappsec.github.io/react-design-system/r/<name>.json`.
 
+## Staying current — automated refresh PRs
+
+shadcn installs are **vendored copies**: once added, your app holds a snapshot and
+does not update itself when the registry changes. Add the refresh workflow and your
+app gets a PR whenever the upstream design system publishes changes:
+
+```yaml
+# .github/workflows/design-refresh.yml
+name: Design system refresh
+on:
+  schedule:
+    - cron: "23 7 * * 1-5"   # weekday mornings UTC
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  refresh:
+    uses: crashappsec/react-design-system/.github/workflows/registry-refresh.yml@main
+    with:
+      items: theme                  # space-separated registry items to track
+      # working-directory: ui       # if components.json is not at the repo root
+```
+
+It re-runs `npx shadcn add --overwrite` for the listed items; if nothing changed it
+exits quietly, otherwise it opens a `design-refresh/registry` PR with the diff.
+Requires the repo/org Actions setting "Allow GitHub Actions to create and approve
+pull requests". PRs opened with the default token do not trigger your CI — pass a
+PAT/App token as the `token` secret if you want CI on refresh PRs.
+
 ## What's in the registry
 
 - **theme** — brand token bridge (oklch light+dark) + JetBrains Mono / Inter / Geist Mono.

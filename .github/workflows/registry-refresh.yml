@@ -1,0 +1,88 @@
+# Reusable workflow: keep consuming apps current with the Crash Override registry.
+#
+# Consumers add a thin caller workflow (see README "Staying current") that runs
+# this on a schedule. It re-pulls the named registry items; if anything changed
+# upstream, it opens a refresh PR in the consuming repo. No drift, no manual
+# re-adds.
+#
+# Requirements in the consuming repo:
+#   - components.json with the @crashoverride registry namespace configured
+#   - Org/repo setting "Allow GitHub Actions to create and approve pull
+#     requests" enabled (Settings > Actions > General)
+#
+# Note: PRs opened with the default GITHUB_TOKEN do not trigger the consumer's
+# own CI. Pass a PAT or GitHub App token via the `token` secret to get CI runs
+# on refresh PRs.
+
+name: Design registry refresh
+
+on:
+  workflow_call:
+    inputs:
+      items:
+        description: "Space-separated registry item names to refresh"
+        type: string
+        default: "theme"
+      working-directory:
+        description: "Directory containing components.json"
+        type: string
+        default: "."
+    secrets:
+      token:
+        description: "Token used to push and open the PR (defaults to github.token)"
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.token || github.token }}
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Refresh registry items
+        id: refresh
+        working-directory: ${{ inputs.working-directory }}
+        env:
+          ITEMS: ${{ inputs.items }}
+        run: |
+          if [ ! -f components.json ]; then
+            echo "No components.json here; nothing to refresh."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          for item in $ITEMS; do
+            npx --yes shadcn@latest add "@crashoverride/${item}" --overwrite --yes
+          done
+          if git diff --quiet; then
+            echo "Already current with the registry."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open refresh PR
+        if: steps.refresh.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.token || github.token }}
+          ITEMS: ${{ inputs.items }}
+        run: |
+          BRANCH="design-refresh/registry"
+          git config user.name "co-design-refresh"
+          git config user.email "design-system@crashoverride.com"
+          git checkout -B "$BRANCH"
+          git add -A
+          git commit -m "chore(design): refresh Crash Override registry items (${ITEMS})"
+          git push -f origin "$BRANCH"
+          gh pr create \
+            --title "chore(design): refresh Crash Override design system" \
+            --body "Automated refresh: the upstream registry (crashappsec/react-design-system) published changes to: \`${ITEMS}\`. This PR re-vendors those items via \`npx shadcn add --overwrite\`. Review the visual diff and merge to stay on-brand." \
+            || echo "PR already open for $BRANCH; updated in place."
