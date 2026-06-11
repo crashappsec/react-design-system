@@ -1,55 +1,11 @@
-<!-- @dsCard group="Colors" viewport="700x420" name="shadcn/ui Theme Tokens" subtitle="Brand → shadcn variable map, full light & dark — paste into globals.css" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<link rel="stylesheet" href="../styles.css" />
-<style>
-  body { margin: 0; background: #000; padding: 14px; font-family: var(--font-mono); }
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .pane { background: var(--card); border: 1px solid var(--border-default1); border-radius: var(--radius-lg); padding: 16px; }
-  .ptag { font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--muted-foreground); margin-bottom: 14px; }
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 14px; }
-  .tok { display: flex; align-items: center; gap: 8px; }
-  .chip { width: 18px; height: 18px; border-radius: var(--radius-xs); border: 1px solid var(--border); flex-shrink: 0; }
-  .nm { font-size: 10.5px; color: var(--foreground); }
-  .demo { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .btn { font-size: 11px; font-weight: 600; padding: 6px 12px; border-radius: var(--radius-md); border: 1px solid transparent; }
-  .b-pri { background: var(--primary); color: var(--primary-foreground); }
-  .b-sec { background: var(--secondary); color: var(--secondary-foreground); }
-  .b-des { background: var(--destructive); color: var(--destructive-foreground); }
-  .b-out { background: transparent; color: var(--foreground); border-color: var(--border); }
-  .card-demo { background: var(--card); color: var(--card-foreground); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 8px 10px; font-size: 11px; }
-</style>
+<title>Moved to brand-visual</title>
+<meta http-equiv="refresh" content="0; url=https://crashappsec.github.io/brand-visual/guidelines/shadcn-theme.html">
 </head>
 <body>
-<div class="split">
-  <div class="pane dark" id="dark"></div>
-  <div class="pane light" id="light"></div>
-</div>
-<script>
-  const tokens = [
-    ["--background","background"],["--foreground","foreground"],
-    ["--primary","primary"],["--secondary","secondary"],
-    ["--muted","muted"],["--accent","accent"],
-    ["--destructive","destructive"],["--border","border"],
-    ["--chart-1","chart-1"],["--chart-2","chart-2"],
-    ["--chart-3","chart-3"],["--chart-4","chart-4"],
-  ];
-  function build(id, tag) {
-    const el = document.getElementById(id);
-    const grid = tokens.map(([v,n]) => `<div class="tok"><span class="chip" style="background:var(${v})"></span><span class="nm">${n}</span></div>`).join("");
-    el.innerHTML = `<div class="ptag">${tag}</div><div class="grid">${grid}</div>
-      <div class="demo">
-        <span class="btn b-pri">Primary</span>
-        <span class="btn b-sec">Secondary</span>
-        <span class="btn b-out">Outline</span>
-        <span class="btn b-des">Destructive</span>
-        <span class="card-demo">card · --card</span>
-      </div>`;
-  }
-  build("dark","Dark · .dark / :root");
-  build("light","Light · :root in shadcn");
-</script>
+<p>This page moved to the brand-visual guidelines: <a href="https://crashappsec.github.io/brand-visual/guidelines/shadcn-theme.html">https://crashappsec.github.io/brand-visual/guidelines/shadcn-theme.html</a></p>
 </body>
 </html>

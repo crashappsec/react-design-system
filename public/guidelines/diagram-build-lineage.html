@@ -1,54 +1,11 @@
-<!-- @dsCard group="Diagrams" viewport="700x400" name="Diagrams — Build Lineage" subtitle="Node-graph pattern: circular nodes, capability colours, thin connectors" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<link rel="stylesheet" href="../styles.css" />
-<style>
-  body { margin: 0; background: var(--surface-primary); padding: 18px; font-family: var(--font-mono); }
-  .panel { border: 1px solid var(--border-default1); border-radius: var(--radius-lg); overflow: hidden; }
-  .phead { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--border-hairline); }
-  .phead .t { font-family: var(--font-body); font-weight: 600; font-size: 13px; color: var(--text-primary); }
-  .phead .r { font-size: 11px; color: var(--text-tertiary); }
-  .canvas { padding: 22px 16px 16px; }
-  .row { display: flex; align-items: flex-start; justify-content: space-between; gap: 4px; }
-  .node { display: flex; flex-direction: column; align-items: center; gap: 7px; width: 104px; text-align: center; }
-  .disc { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--c); background: color-mix(in srgb, var(--c) 12%, transparent); color: var(--c); position: relative; }
-  .lbl { font-size: 11.5px; color: var(--text-primary); }
-  .sub { font-size: 9.5px; color: var(--text-tertiary); }
-  .conn { flex: 1; height: 44px; display: flex; align-items: center; justify-content: center; color: var(--text-tertiary); }
-  .badges { display: flex; gap: 4px; justify-content: center; margin-top: 5px; flex-wrap: wrap; }
-  .b { font-size: 8.5px; font-weight: 700; letter-spacing: 0.06em; padding: 2px 6px; border-radius: var(--radius-full); }
-  .branch { display: flex; gap: 36px; justify-content: center; margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--border-hairline); }
-  .pfoot { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-top: 1px solid var(--border-hairline); font-size: 10.5px; color: var(--text-tertiary); }
-  .check { color: var(--color-neon-400); }
-</style>
+<title>Moved to brand-visual</title>
+<meta http-equiv="refresh" content="0; url=https://crashappsec.github.io/brand-visual/guidelines/diagram-build-lineage.html">
 </head>
 <body>
-  <div class="panel">
-    <div class="phead"><span class="t">Build Visualization</span><span class="r">clickhouse-dbt · #398</span></div>
-    <div class="canvas">
-      <div class="row">
-        <div class="node"><div class="disc" style="--c:var(--color-thunder-500)"><i data-lucide="box"></i></div><span class="lbl">ubuntu</span><span class="sub">24.04 · 186072b</span></div>
-        <div class="conn"><i data-lucide="arrow-right"></i></div>
-        <div class="node"><div class="disc" style="--c:var(--color-cobalt-500)"><i data-lucide="git-commit-horizontal"></i></div><span class="lbl">commit</span><span class="sub">a0f0007 → eee5946</span></div>
-        <div class="conn"><i data-lucide="arrow-right"></i></div>
-        <div class="node"><div class="disc" style="--c:var(--color-magenta-500)"><i data-lucide="layers"></i></div><span class="lbl">Built images</span><span class="sub">/dbt/Dockerfile</span></div>
-        <div class="conn"><i data-lucide="arrow-right"></i></div>
-        <div class="node"><div class="disc" style="--c:var(--color-neon-300)"><i data-lucide="container"></i></div><span class="lbl">ECR us-east-1</span><span class="sub">3 tags</span></div>
-        <div class="conn"><i data-lucide="arrow-right"></i></div>
-        <div class="node"><div class="disc" style="--c:var(--color-neon-400)"><i data-lucide="cloud"></i></div><span class="lbl">Services</span>
-          <div class="badges"><span class="b" style="color:var(--color-cobalt-400);background:var(--color-cobalt-500-12)">DEV</span><span class="b" style="color:var(--color-neon-400);background:var(--color-neon-400-12)">PROD</span><span class="b" style="color:var(--color-magenta-400);background:var(--color-magenta-400-12)">UAT</span></div>
-        </div>
-      </div>
-      <div class="branch">
-        <div class="node"><div class="disc" style="--c:var(--color-cobalt-500)"><i data-lucide="package"></i></div><span class="lbl">Packages</span></div>
-        <div class="node"><div class="disc" style="--c:var(--color-neon-400)"><i data-lucide="download"></i></div><span class="lbl">Downloads</span></div>
-      </div>
-    </div>
-    <div class="pfoot"><i data-lucide="check" class="check"></i> Full build lineage · commit to production · SLSA L3</div>
-  </div>
-  <script src="https://unpkg.com/lucide@0.474.0/dist/umd/lucide.min.js"></script>
-  <script>lucide.createIcons({ attrs: { 'stroke-width': 1.75, width: 20, height: 20 } });</script>
+<p>This page moved to the brand-visual guidelines: <a href="https://crashappsec.github.io/brand-visual/guidelines/diagram-build-lineage.html">https://crashappsec.github.io/brand-visual/guidelines/diagram-build-lineage.html</a></p>
 </body>
 </html>

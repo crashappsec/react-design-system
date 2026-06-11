@@ -1,39 +1,11 @@
-<!-- @dsCard group="Icons" viewport="700x6600" name="Icon Set — Full Lucide Library" subtitle="Every Lucide icon · 1.75 stroke · currentColor (inherits theme)" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<link rel="stylesheet" href="../styles.css" />
-<style>
-  body { margin: 0; background: var(--surface-primary); padding: 18px; font-family: var(--font-mono); }
-  .head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; }
-  .head h3 { font-family: var(--font-title); font-size: 15px; color: var(--text-primary); margin: 0; }
-  .count { font-size: 11px; color: var(--color-neon-400); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); gap: 6px; }
-  .cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-hairline); border-radius: var(--radius-sm); color: var(--text-secondary); }
-  .cell svg { width: 24px; height: 24px; }
-  .note { font-size: 10.5px; color: var(--text-tertiary); margin-bottom: 12px; line-height: 1.5; }
-  .note b { color: var(--text-secondary); }
-</style>
+<title>Moved to brand-visual</title>
+<meta http-equiv="refresh" content="0; url=https://crashappsec.github.io/brand-visual/guidelines/brand-icons.html">
 </head>
 <body>
-  <div class="head"><h3>Lucide — full library</h3><span class="count" id="count">loading…</span></div>
-  <p class="note">Every icon registered in Lucide, rendered at the brand's <b>1.75</b> stroke with <b>currentColor</b> (so each inherits the surrounding text colour in light or dark). Reference by name via the kit's <code>&lt;Icon name="…"/&gt;</code> helper. Capability-code active icons with an accent tint.</p>
-  <div class="grid" id="grid"></div>
-  <script src="https://unpkg.com/lucide@0.474.0/dist/umd/lucide.min.js"></script>
-  <script>
-    function kebab(s){ return s.replace(/([a-z0-9])([A-Z])/g,'$1-$2').replace(/([A-Z])([A-Z][a-z])/g,'$1-$2').toLowerCase(); }
-    const reg = (window.lucide && window.lucide.icons) ? window.lucide.icons : {};
-    const names = Object.keys(reg).filter(function(n){ return n !== 'createLucideIcon' && /^[A-Z]/.test(n); });
-    const seen = {};
-    const kebabs = [];
-    names.forEach(function(n){ const k = kebab(n); if(!seen[k]){ seen[k]=1; kebabs.push(k);} });
-    kebabs.sort();
-    document.getElementById('count').textContent = kebabs.length + ' icons';
-    document.getElementById('grid').innerHTML = kebabs.map(function(k){
-      return '<div class="cell" title="'+k+'"><i data-lucide="'+k+'"></i></div>';
-    }).join('');
-    lucide.createIcons({ attrs: { 'stroke-width': 1.75 } });
-  </script>
+<p>This page moved to the brand-visual guidelines: <a href="https://crashappsec.github.io/brand-visual/guidelines/brand-icons.html">https://crashappsec.github.io/brand-visual/guidelines/brand-icons.html</a></p>
 </body>
 </html>

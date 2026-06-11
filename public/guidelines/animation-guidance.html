@@ -1,36 +1,11 @@
-<!-- @dsCard group="Motion" viewport="700x320" name="Animation — Subtle & Sparing" subtitle="Easing curves, durations & the rules: motion clarifies, never decorates" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<link rel="stylesheet" href="../styles.css" />
-<style>
-  body { margin: 0; background: var(--surface-primary); padding: 20px; font-family: var(--font-mono); }
-  .top { display: grid; grid-template-columns: repeat(3, 1fr) 1.3fr; gap: 14px; margin-bottom: 16px; }
-  .ease { border: 1px solid var(--border-hairline); border-radius: var(--radius-md); padding: 12px; }
-  .ease svg { width: 100%; height: 56px; display: block; }
-  .ease .nm { font-size: 11px; color: var(--text-primary); font-weight: 600; margin-top: 8px; }
-  .ease .cb { font-size: 9px; color: var(--text-tertiary); }
-  .demo { border: 1px solid var(--border-hairline); border-radius: var(--radius-md); padding: 12px; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
-  .demo .dl { font-size: 9.5px; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.12em; }
-  .stagger > span { display: block; height: 9px; border-radius: 2px; background: var(--color-neon-400-15); border-left: 2px solid var(--color-neon-400); opacity: 0; animation: rise 320ms var(--ease-out) forwards; }
-  .stagger > span:nth-child(1){ animation-delay: .1s } .stagger > span:nth-child(2){ animation-delay:.2s } .stagger > span:nth-child(3){ animation-delay:.3s }
-  @keyframes rise { from { opacity:0; transform: translateY(7px) } to { opacity:1; transform:none } }
-  .rules { font-size: 11px; color: var(--text-tertiary); line-height: 1.6; }
-  .rules b { color: var(--text-secondary); }
-  .dur { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
-  .pill { font-size: 9.5px; padding: 3px 8px; border-radius: var(--radius-full); border: 1px solid var(--border-hairline); color: var(--text-secondary); }
-  @media (prefers-reduced-motion: reduce){ .stagger > span { opacity:1; animation:none } }
-</style>
+<title>Moved to brand-visual</title>
+<meta http-equiv="refresh" content="0; url=https://crashappsec.github.io/brand-visual/guidelines/animation-guidance.html">
 </head>
 <body>
-  <div class="top">
-    <div class="ease"><svg viewBox="0 0 90 56"><polyline points="0,56 90,56" fill="none" stroke="var(--border-hairline)"/><path d="M0,56 C20.7,0 28.8,0 90,0" fill="none" stroke="var(--color-neon-400)" stroke-width="2"/></svg><div class="nm">ease-out</div><div class="cb">.23,1,.32,1 · default</div></div>
-    <div class="ease"><svg viewBox="0 0 90 56"><path d="M0,56 C69,56 16,0 90,0" fill="none" stroke="var(--color-magenta-400)" stroke-width="2"/></svg><div class="nm">ease-in-out</div><div class="cb">.77,0,.175,1</div></div>
-    <div class="ease"><svg viewBox="0 0 90 56"><path d="M0,56 C29,16 0,0 90,0" fill="none" stroke="var(--color-cobalt-400)" stroke-width="2"/></svg><div class="nm">ease-drawer</div><div class="cb">.32,.72,0,1 · panels</div></div>
-    <div class="demo"><span class="dl">fade-up · 320ms · 50ms stagger</span><div class="stagger"><span></span><span></span><span></span></div></div>
-  </div>
-  <div class="dur"><span class="pill">fast 150ms</span><span class="pill">base 250ms</span><span class="pill">slow 350ms</span><span class="pill">reduced-motion → end state</span></div>
-  <p class="rules"><b>Subtle &amp; sparing — motion clarifies a state change, it never decorates.</b> Entrance: <b>fade-up + stagger</b> (320ms, 50ms steps) on first paint. Hover: 150ms colour/bg only. Drawer / Sheet: 250–350ms on <b>ease-drawer</b>. Toast: ~220ms in. &nbsp;<b>Never:</b> infinite decorative loops, bounce / overshoot, parallax, motion on hero type beyond a single fade. One accent motion per view, max. Always honour <b>prefers-reduced-motion</b>.</p>
+<p>This page moved to the brand-visual guidelines: <a href="https://crashappsec.github.io/brand-visual/guidelines/animation-guidance.html">https://crashappsec.github.io/brand-visual/guidelines/animation-guidance.html</a></p>
 </body>
 </html>
