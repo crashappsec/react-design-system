@@ -97,6 +97,19 @@ PAT/App token as the `token` secret if you want CI on refresh PRs.
 The authoritative list of items lives in [`registry.json`](./registry.json), and the
 generated JSON in `public/r/` after a build.
 
+## Token and guideline canon
+
+The **source of truth for brand tokens and design guidelines** is the
+[crashappsec/brand-visual](https://github.com/crashappsec/brand-visual) repository,
+published to https://crashappsec.github.io/brand-visual/.
+
+This repo (`react-design-system`) is the **React implementation layer**: it consumes
+`@crashoverride/brand-tokens` (published from brand-visual) to materialize
+`src/registry/crashoverride/theme/tokens.css`, and packages the result as a shadcn
+registry (components + the theme item). Design decisions, color values, typography
+specs, and brand assets all originate in brand-visual; changes to the token canon
+flow into this repo through the automated staleness-gate CI and registry-refresh workflow.
+
 ## Live site
 
 The registry and its brand guidelines are published to GitHub Pages:
