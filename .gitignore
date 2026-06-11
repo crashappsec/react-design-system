@@ -31,3 +31,9 @@ storybook-static
 
 # Local Pages assemble dir (CI builds this fresh; serves Storybook + /r/)
 _site
+
+# Playwright visual-regression transient output (the committed baselines under
+# src/test/__screenshots__/ are NOT ignored — only the diff/report artifacts are)
+test-results
+playwright-report
+blob-report

@@ -199,6 +199,31 @@ npm run test:storybook -- --url http://127.0.0.1:6006
 > stories scope **only** the `color-contrast` rule off, each with a justifying comment;
 > every other axe rule still runs on them.
 
+## Visual regression on token bumps
+
+A **token change should not silently restyle the system**, so a Playwright screenshot
+suite (`src/test/visual/`) snapshots a representative slice of the Storybook build (the
+Foundations pages + one story per component/block family) and compares it to committed
+baselines. The `visual-regression` workflow runs **only when a token-affecting path
+changes** (`package.json`, `package-lock.json`, `src/registry/crashoverride/theme/**`),
+uploads the diff images as an artifact on failure, and an intentional change is accepted
+by refreshing the baselines.
+
+```bash
+npm run build-storybook
+npx http-server storybook-static -p 6006 -s &
+npx wait-on http://127.0.0.1:6006
+npm run test:visual                      # verify against committed baselines
+npm run test:visual -- --update-snapshots  # accept an intentional visual change
+```
+
+> **Baselines are per-OS.** chromium renders fonts differently on macOS vs Linux, so
+> snapshots carry a `-{platform}` suffix. The committed `-darwin` set is the local
+> reference; the **`-linux` set used by CI is generated in CI**. Run the
+> `visual-regression` workflow's `workflow_dispatch` (Actions tab) to seed or refresh it
+> on a branch. This avoids the flaky-baseline trap of committing macOS pixels that CI
+> can never match.
+
 ## Plan & spec
 
 The implementation plan and design spec live in the COMPASS repository under

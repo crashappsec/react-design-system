@@ -13,5 +13,7 @@ export default defineConfig({
     setupFiles: ["./src/test/setup.ts"],
     css: false,
     include: ["src/**/*.{test,spec}.{ts,tsx}"],
+    // Playwright visual specs (*.visual.ts) run under @playwright/test, not vitest.
+    exclude: ["**/node_modules/**", "src/test/visual/**"],
   },
 })

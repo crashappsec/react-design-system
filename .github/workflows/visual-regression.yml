@@ -1,0 +1,91 @@
+name: Visual regression
+on:
+  # Only run when something that can shift the rendered pixels changes: the brand
+  # theme tokens, or the dependency set (a component/Radix/Tailwind bump). Story
+  # edits do not trigger it; refresh baselines in the same PR if a change is
+  # intentional (see update-baselines below).
+  pull_request:
+    paths:
+      - "package.json"
+      - "package-lock.json"
+      - "src/registry/crashoverride/theme/**"
+  # Manual baseline refresh: run this from the Actions tab on a branch to
+  # (re)generate the Linux baselines and commit them back to that branch. Use it
+  # to seed the first -linux set, or to accept an intentional visual change.
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Branch to update baselines on"
+        required: true
+        default: "feat/brand-tokens-consumption"
+
+jobs:
+  # PR guard: compare the served Storybook against the committed baselines.
+  verify:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: "npm"
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build-storybook
+      - name: Serve storybook-static
+        run: npx http-server storybook-static -p 6006 -s &
+      - run: npx wait-on http://127.0.0.1:6006
+      - name: Visual diff vs committed baselines
+        run: npm run test:visual
+      # The diff images (expected/actual/diff) land in test-results/ on failure.
+      - name: Upload diff images
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-diff
+          path: test-results/
+          retention-days: 14
+          if-no-files-found: ignore
+
+  # Manual: regenerate the Linux baselines and commit them to the target branch.
+  update-baselines:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.ref }}
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: "npm"
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build-storybook
+      - name: Serve storybook-static
+        run: npx http-server storybook-static -p 6006 -s &
+      - run: npx wait-on http://127.0.0.1:6006
+      - name: Regenerate Linux baselines
+        run: npm run test:visual -- --update-snapshots
+      - name: Commit refreshed baselines
+        # inputs.ref comes in via an env var (never interpolated into the shell)
+        # and is validated against a conservative branch-name pattern before use.
+        env:
+          TARGET_REF: ${{ inputs.ref }}
+        run: |
+          case "$TARGET_REF" in
+            *[!A-Za-z0-9._/-]*|""|-*)
+              echo "Refusing unsafe ref: $TARGET_REF"; exit 1 ;;
+          esac
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- src/test/__screenshots__; then
+            echo "No baseline changes."
+            exit 0
+          fi
+          git add src/test/__screenshots__
+          git commit -m "test(visual): refresh CI (Linux) visual-regression baselines"
+          git push origin "HEAD:$TARGET_REF"
