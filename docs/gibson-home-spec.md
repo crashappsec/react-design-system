@@ -62,12 +62,13 @@ The landing pins them as `--gl-*` in
 | info | `#60a5fa` | `#2563eb` |
 | fonts | mono: Geist Mono · body: Inter · display: JetBrains Mono | same |
 
-**Known deltas vs the gibson-theme global tokens** (pending a decision —
-aligning them re-skins every internal-app surface, so it is gated on Mark):
-`--background` is `oklch(0.145 0.02 274)` in the theme vs `0.17` approved
-chrome / `0.2` approved page; `--card` is `0.185 0.022 274` vs `0.24`
-approved panel; `--muted-foreground` is `0.66 0.018 274` vs `0.68` text-2.
-Primary, foreground and borders already match. Until aligned, the approved
+**Known deltas vs the gibson-theme global tokens** — DECIDED 2026-06-12
+(Mark): keep the theme tokens as they are for now; Mark will update both
+(theme globals + this table) together later. The deltas: `--background` is
+`oklch(0.145 0.02 274)` in the theme vs `0.17` approved chrome / `0.2`
+approved page; `--card` is `0.185 0.022 274` vs `0.24` approved panel;
+`--muted-foreground` is `0.66 0.018 274` vs `0.68` text-2. Primary,
+foreground and borders already match. Until that joint update, the approved
 values live pinned in the landing stylesheet; new internal surfaces should
 take values from THIS table, not by sampling the theme defaults.
 
