@@ -31,7 +31,7 @@ block (or merge it into your existing one):
 // components.json
 {
   "registries": {
-    "@crashoverride": "https://crashappsec.github.io/react-design-system/r/{name}.json"
+    "@crashoverride": "https://crashappsec.github.io/react-registry/r/{name}.json"
   }
 }
 ```
@@ -52,7 +52,7 @@ npx shadcn add @crashoverride/stat-card-row   # a composite block
 ```
 
 Each item resolves to JSON served from GitHub Pages at
-`https://crashappsec.github.io/react-design-system/r/<name>.json`.
+`https://crashappsec.github.io/react-registry/r/<name>.json`.
 
 ## Pinning to a registry major version
 
@@ -64,7 +64,7 @@ breaking token changes -- use the versioned path instead:
 // components.json
 {
   "registries": {
-    "@crashoverride": "https://crashappsec.github.io/react-design-system/r/v1/{name}.json"
+    "@crashoverride": "https://crashappsec.github.io/react-registry/r/v1/{name}.json"
   }
 }
 ```
@@ -108,7 +108,7 @@ permissions:
   pull-requests: write
 jobs:
   refresh:
-    uses: crashappsec/react-design-system/.github/workflows/registry-refresh.yml@main
+    uses: crashappsec/react-registry/.github/workflows/registry-refresh.yml@main
     with:
       items: theme                  # space-separated registry items to track
       # working-directory: ui       # if components.json is not at the repo root
@@ -139,7 +139,7 @@ The **source of truth for brand tokens and design guidelines** is the
 [crashappsec/brand-visual](https://github.com/crashappsec/brand-visual) repository,
 published to https://crashappsec.github.io/brand-visual/.
 
-This repo (`react-design-system`) is the **React implementation layer**: it consumes
+This repo (`react-registry`) is the **React implementation layer**: it consumes
 `@crashoverride/brand-tokens` (published from brand-visual) to materialize
 `src/registry/crashoverride/theme/tokens.css`, and packages the result as a shadcn
 registry (components + the theme item). Design decisions, color values, typography
@@ -150,9 +150,9 @@ flow into this repo through the automated staleness-gate CI and registry-refresh
 
 The registry and its brand guidelines are published to GitHub Pages:
 
-- **Landing page:** https://crashappsec.github.io/react-design-system/
-- **Registry items:** `https://crashappsec.github.io/react-design-system/r/<name>.json`
-- **Brand guidelines:** `https://crashappsec.github.io/react-design-system/guidelines/`
+- **Landing page:** https://crashappsec.github.io/react-registry/
+- **Registry items:** `https://crashappsec.github.io/react-registry/r/<name>.json`
+- **Brand guidelines:** `https://crashappsec.github.io/react-registry/guidelines/`
 
 ## Develop locally
 

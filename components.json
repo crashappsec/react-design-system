@@ -17,6 +17,6 @@
     "utils": "@/registry/crashoverride/lib/utils"
   },
   "registries": {
-    "@crashoverride": "https://crashappsec.github.io/react-design-system/r/{name}.json"
+    "@crashoverride": "https://crashappsec.github.io/react-registry/r/{name}.json"
   }
 }

@@ -163,5 +163,5 @@ jobs:
             --head "$BRANCH" \
             --base "$BASE_BRANCH" \
             --title "chore(design): refresh Crash Override design system" \
-            --body "Automated refresh: the upstream registry (crashappsec/react-design-system) published changes to: \`${ITEMS}\`. This PR re-vendors those items via \`npx shadcn add --overwrite\`. Review the visual diff and merge to stay on-brand." \
+            --body "Automated refresh: the upstream registry (crashappsec/react-registry) published changes to: \`${ITEMS}\`. This PR re-vendors those items via \`npx shadcn add --overwrite\`. Review the visual diff and merge to stay on-brand." \
             || echo "PR already open for $BRANCH; branch updated in place."

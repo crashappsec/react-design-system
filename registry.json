@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "crashoverride",
-  "homepage": "https://crashappsec.github.io/react-design-system",
+  "homepage": "https://crashappsec.github.io/react-registry",
   "items": [
     {
       "name": "theme",
