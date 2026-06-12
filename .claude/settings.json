@@ -1,0 +1,15 @@
+{
+  "extraKnownMarketplaces": {
+    "gibson": {
+      "source": {
+        "source": "github",
+        "repo": "crashappsec/agent-marketplace"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "quartermaster@gibson": true,
+    "co-engineering@gibson": true,
+    "co-design@gibson": true
+  }
+}
